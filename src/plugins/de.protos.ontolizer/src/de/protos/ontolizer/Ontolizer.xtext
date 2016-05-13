@@ -1,0 +1,50 @@
+grammar de.protos.ontolizer.Ontolizer with org.eclipse.xtext.common.Terminals
+
+generate ontolizer "http://www.protos.de/ontolizer/Ontolizer"
+
+Model:
+	(nodeTypes+=NodeType |
+	edgeTypes+=EdgeType |
+	nodes+=Node |
+	views+=View)*;
+
+NodeType:
+	'NodeType' name=ID
+	('shape' shape=STRING)?
+	('color' color=STRING)?
+	('style' style=STRING)?
+	';';
+
+EdgeType:
+	'EdgeType' name=ID
+	';';
+
+
+Node:
+	nodeType=[NodeType] name=ID
+	('summary' summary+=STRING)*
+	(edgeLists+=EdgeList)*
+	';';
+
+EdgeList:
+	edgeType=[EdgeType] edges+=Edge (',' edges+=Edge)*
+	; 
+
+Edge:
+	targetNode=[Node]
+;
+
+View:
+	'View' name=ID
+	('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)?
+	('nodeTypes' nodeTypes+=[NodeType] (',' nodeTypes+=[NodeType])*)?
+	('node' node=[Node])?
+	';'
+;
+
+
+// Terminals
+
+//terminal CC_STRING:
+//	"'''" -> "'''";
+	
