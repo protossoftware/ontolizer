@@ -1,0 +1,10 @@
+
+	digraph {
+		OntologyModeling [shape=rectangle,fillcolor=lightblue,style=filled];				
+		Usability [shape=oval,fillcolor=orange,style=filled];				
+		Traceability [shape=oval,fillcolor=orange,style=filled];				
+		VersionControl [shape=oval,fillcolor=orange,style=filled];				
+		TextualSyntax [label="TextualSyntax\n[Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
+					This can be versioned, branched and merged 
+					with any version control system (e.g. Subversion , GIT, ...)]" shape=rectangle,fillcolor=lightblue,style=filled];				
+	}

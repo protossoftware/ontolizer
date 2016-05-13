@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Generates bitmap images from DOT files for process documentation
+     ====================================================================== -->
+<project name="builddotfiles" default="build">
+	<description>
+	   	Generates bitmap images from DOT files for process documentation
+	   </description>
+
+	<target name="build" description="description" depends="init-dot.binpath">
+		<apply executable="${dot.binpath}" dest="./">
+			<arg value="-Tjpg" />
+			<srcfile />
+			<arg value="-o" />
+			<targetfile />
+			<fileset dir="./" includes="*.dot" />
+			<mapper type="glob" from="*.dot" to="*.jpg" />
+		</apply>
+	</target>
+
+	<target name="init-dot.binpath" unless="dot.binpath">
+		<property environment="env" />
+		<condition property="dot.binpath" value="${env.DOT_PATH}/dot" else="dot">
+			<isset property="env.DOT_PATH" />
+		</condition>
+	</target>
+
+</project>

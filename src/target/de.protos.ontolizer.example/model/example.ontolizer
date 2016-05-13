@@ -1,0 +1,59 @@
+View _global
+;
+
+View Taxonomy
+	// a taxonomy displays only „isA“ edges for all node types (default)
+	edgeTypes isA
+;
+
+View CompanyKnowHow
+	// display only node feature with all edge types (default)
+	nodeTypes Feature
+;
+
+// definition of edge types
+EdgeType isA ;
+
+EdgeType solves ;
+
+EdgeType implements ;
+
+EdgeType uses ;
+
+EdgeType includes ;
+
+// definition of node types and their appearance in dot graph
+NodeType Feature
+	shape "rectangle"
+	color "lightblue"
+	style "filled"
+;
+
+NodeType Requirement
+	shape "oval"
+	color "orange"
+	style "filled"
+;
+
+// Nodes
+Feature OntologyModeling
+;
+
+Requirement Usability
+	includes Traceability
+	, VersionControl
+;
+
+Requirement Traceability
+;
+
+Requirement VersionControl
+;
+
+Feature TextualSyntax
+	summary "Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
+			This can be versioned, branched and merged 
+			with any version control system (e.g. Subversion , GIT, ...)"
+	solves VersionControl
+;
+
