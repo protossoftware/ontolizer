@@ -14,22 +14,35 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import java.util.List
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.Delegate
+import com.google.common.collect.Iterables
 
 class DotGenerator extends AbstractGenerator {
 	
 	static val NEWLINE = System.lineSeparator // os line separator
 	static val MAX_DEPTH = 0 // equals default of DepthRange
 	
+	@Accessors
+	static class ExpandedModel implements Model {
+		@Delegate
+		val Model model
+		
+		
+		val forwardEdges = model.eAllContents.filter(Edge).toMap[eContainer.eContainer as Node]
+		val backwardEdges = model.eAllContents.filter(EdgeList).map[edges].toIterable.flatten.toMap[targetNode]
+	}
+	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val baseFileNames = <String>newArrayList
 		
-		val model = resource.contents.head as Model
+		val model = new ExpandedModel(resource.contents.head as Model)
 		baseFileNames += model.views.map[generateView(model, it, fsa)].flatten
 
 		generateAntBuildfile(baseFileNames, fsa)
 	}
 	
-	def List<String> generateView(Model model, View view, IFileSystemAccess2 fsa){
+	def List<String> generateView(ExpandedModel model, View view, IFileSystemAccess2 fsa){
 		val List<String> baseFileNames = newArrayList
 		
 		val depthStart = if(view.depth != null) view.depth.start else MAX_DEPTH
@@ -45,10 +58,11 @@ class DotGenerator extends AbstractGenerator {
 				val allEdges = newHashSet
 				val stack = newLinkedList(contextNode)
 				
-				var currentDepth = 1
+				var currentDepth = 1 
 				var lastElementInDepth = contextNode
 				while(!stack.empty){
 					val node = stack.pop
+					val biEdges = Iterables.concat(model.forwardEdges.get(node), model.backwardEdges.get(node))
 					val edges = node.edgeLists.filter[edgeListFilter.apply(it)].map[edges].flatten.filter[edgeFilter.apply(it)]
 					allEdges += edges
 					edges.map[targetNode].filter[nodeFilter.apply(it)].forEach[if(allNodes += it) stack.addLast(it)]

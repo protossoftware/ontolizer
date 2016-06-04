@@ -1,8 +1,7 @@
 package de.protos.ontolizer.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import de.protos.ontolizer.ontolizer.DepthRange;
+import com.google.common.collect.Iterators;
 import de.protos.ontolizer.ontolizer.Edge;
 import de.protos.ontolizer.ontolizer.EdgeList;
 import de.protos.ontolizer.ontolizer.EdgeType;
@@ -10,27 +9,167 @@ import de.protos.ontolizer.ontolizer.Model;
 import de.protos.ontolizer.ontolizer.Node;
 import de.protos.ontolizer.ontolizer.NodeType;
 import de.protos.ontolizer.ontolizer.View;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend.lib.annotations.Accessors;
+import org.eclipse.xtend.lib.annotations.Delegate;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IntegerRange;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pure;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class DotGenerator extends AbstractGenerator {
+  @Accessors
+  public static class ExpandedModel implements Model {
+    @Delegate
+    private final Model model;
+    
+    private final Map<Node, Edge> forwardEdges = IteratorExtensions.<Node, Edge>toMap(Iterators.<Edge>filter(this.model.eAllContents(), Edge.class), ((Function1<Edge, Node>) (Edge it) -> {
+      EObject _eContainer = it.eContainer();
+      EObject _eContainer_1 = _eContainer.eContainer();
+      return ((Node) _eContainer_1);
+    }));
+    
+    private final Map<Node, Edge> backwardEdges = IterableExtensions.<Node, Edge>toMap(Iterables.<Edge>concat(IteratorExtensions.<EList<Edge>>toIterable(IteratorExtensions.<EdgeList, EList<Edge>>map(Iterators.<EdgeList>filter(this.model.eAllContents(), EdgeList.class), ((Function1<EdgeList, EList<Edge>>) (EdgeList it) -> {
+      return it.getEdges();
+    })))), ((Function1<Edge, Node>) (Edge it) -> {
+      return it.getTargetNode();
+    }));
+    
+    public ExpandedModel(final Model model) {
+      super();
+      this.model = model;
+    }
+    
+    @Pure
+    public Model getModel() {
+      return this.model;
+    }
+    
+    @Pure
+    public Map<Node, Edge> getForwardEdges() {
+      return this.forwardEdges;
+    }
+    
+    @Pure
+    public Map<Node, Edge> getBackwardEdges() {
+      return this.backwardEdges;
+    }
+    
+    public EList<EdgeType> getEdgeTypes() {
+      return this.model.getEdgeTypes();
+    }
+    
+    public EList<NodeType> getNodeTypes() {
+      return this.model.getNodeTypes();
+    }
+    
+    public EList<Node> getNodes() {
+      return this.model.getNodes();
+    }
+    
+    public EList<View> getViews() {
+      return this.model.getViews();
+    }
+    
+    public TreeIterator<EObject> eAllContents() {
+      return this.model.eAllContents();
+    }
+    
+    public EClass eClass() {
+      return this.model.eClass();
+    }
+    
+    public EObject eContainer() {
+      return this.model.eContainer();
+    }
+    
+    public EStructuralFeature eContainingFeature() {
+      return this.model.eContainingFeature();
+    }
+    
+    public EReference eContainmentFeature() {
+      return this.model.eContainmentFeature();
+    }
+    
+    public EList<EObject> eContents() {
+      return this.model.eContents();
+    }
+    
+    public EList<EObject> eCrossReferences() {
+      return this.model.eCrossReferences();
+    }
+    
+    public Object eGet(final EStructuralFeature feature) {
+      return this.model.eGet(feature);
+    }
+    
+    public Object eGet(final EStructuralFeature feature, final boolean resolve) {
+      return this.model.eGet(feature, resolve);
+    }
+    
+    public Object eInvoke(final EOperation operation, final EList<?> arguments) throws InvocationTargetException {
+      return this.model.eInvoke(operation, arguments);
+    }
+    
+    public boolean eIsProxy() {
+      return this.model.eIsProxy();
+    }
+    
+    public boolean eIsSet(final EStructuralFeature feature) {
+      return this.model.eIsSet(feature);
+    }
+    
+    public Resource eResource() {
+      return this.model.eResource();
+    }
+    
+    public void eSet(final EStructuralFeature feature, final Object newValue) {
+      this.model.eSet(feature, newValue);
+    }
+    
+    public void eUnset(final EStructuralFeature feature) {
+      this.model.eUnset(feature);
+    }
+    
+    public EList<Adapter> eAdapters() {
+      return this.model.eAdapters();
+    }
+    
+    public boolean eDeliver() {
+      return this.model.eDeliver();
+    }
+    
+    public void eNotify(final Notification notification) {
+      this.model.eNotify(notification);
+    }
+    
+    public void eSetDeliver(final boolean deliver) {
+      this.model.eSetDeliver(deliver);
+    }
+  }
+  
   private final static String NEWLINE = System.lineSeparator();
   
   private final static int MAX_DEPTH = 0;
@@ -40,7 +179,7 @@ public class DotGenerator extends AbstractGenerator {
     final ArrayList<String> baseFileNames = CollectionLiterals.<String>newArrayList();
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
-    final Model model = ((Model) _head);
+    final DotGenerator.ExpandedModel model = new DotGenerator.ExpandedModel(((Model) _head));
     EList<View> _views = model.getViews();
     final Function1<View, List<String>> _function = (View it) -> {
       return this.generateView(model, it, fsa);
@@ -51,144 +190,10 @@ public class DotGenerator extends AbstractGenerator {
     this.generateAntBuildfile(baseFileNames, fsa);
   }
   
-  public List<String> generateView(final Model model, final View view, final IFileSystemAccess2 fsa) {
-    final List<String> baseFileNames = CollectionLiterals.<String>newArrayList();
-    int _xifexpression = (int) 0;
-    DepthRange _depth = view.getDepth();
-    boolean _notEquals = (!Objects.equal(_depth, null));
-    if (_notEquals) {
-      DepthRange _depth_1 = view.getDepth();
-      _xifexpression = _depth_1.getStart();
-    } else {
-      _xifexpression = DotGenerator.MAX_DEPTH;
-    }
-    final int depthStart = _xifexpression;
-    int _xifexpression_1 = (int) 0;
-    DepthRange _depth_2 = view.getDepth();
-    boolean _notEquals_1 = (!Objects.equal(_depth_2, null));
-    if (_notEquals_1) {
-      DepthRange _depth_3 = view.getDepth();
-      _xifexpression_1 = _depth_3.getEnd();
-    } else {
-      _xifexpression_1 = DotGenerator.MAX_DEPTH;
-    }
-    final int depthEnd = _xifexpression_1;
-    final Function1<Node, Boolean> _function = (Node node) -> {
-      boolean _or = false;
-      EList<NodeType> _nodeTypes = view.getNodeTypes();
-      boolean _isEmpty = _nodeTypes.isEmpty();
-      if (_isEmpty) {
-        _or = true;
-      } else {
-        EList<NodeType> _nodeTypes_1 = view.getNodeTypes();
-        NodeType _nodeType = node.getNodeType();
-        boolean _contains = _nodeTypes_1.contains(_nodeType);
-        _or = _contains;
-      }
-      return Boolean.valueOf(_or);
-    };
-    final Function1<? super Node, ? extends Boolean> nodeFilter = _function;
-    final Function1<EdgeList, Boolean> _function_1 = (EdgeList list) -> {
-      return Boolean.valueOf(true);
-    };
-    final Function1<? super EdgeList, ? extends Boolean> edgeListFilter = _function_1;
-    final Function1<Edge, Boolean> _function_2 = (Edge edge) -> {
-      return Boolean.valueOf(true);
-    };
-    final Function1<? super Edge, ? extends Boolean> edgeFilter = _function_2;
-    EList<Node> _nodes = model.getNodes();
-    final Function1<Node, Boolean> _function_3 = (Node it) -> {
-      return nodeFilter.apply(it);
-    };
-    Iterable<Node> _filter = IterableExtensions.<Node>filter(_nodes, _function_3);
-    final Consumer<Node> _function_4 = (Node contextNode) -> {
-      IntegerRange _upTo = new IntegerRange(depthStart, depthEnd);
-      for (final Integer graphDepth : _upTo) {
-        {
-          final HashSet<Node> allNodes = CollectionLiterals.<Node>newHashSet();
-          final HashSet<Edge> allEdges = CollectionLiterals.<Edge>newHashSet();
-          final LinkedList<Node> stack = CollectionLiterals.<Node>newLinkedList(contextNode);
-          int currentDepth = 1;
-          Node lastElementInDepth = contextNode;
-          while ((!stack.isEmpty())) {
-            {
-              final Node node = stack.pop();
-              EList<EdgeList> _edgeLists = node.getEdgeLists();
-              final Function1<EdgeList, Boolean> _function_5 = (EdgeList it) -> {
-                return edgeListFilter.apply(it);
-              };
-              Iterable<EdgeList> _filter_1 = IterableExtensions.<EdgeList>filter(_edgeLists, _function_5);
-              final Function1<EdgeList, EList<Edge>> _function_6 = (EdgeList it) -> {
-                return it.getEdges();
-              };
-              Iterable<EList<Edge>> _map = IterableExtensions.<EdgeList, EList<Edge>>map(_filter_1, _function_6);
-              Iterable<Edge> _flatten = Iterables.<Edge>concat(_map);
-              final Function1<Edge, Boolean> _function_7 = (Edge it) -> {
-                return edgeFilter.apply(it);
-              };
-              final Iterable<Edge> edges = IterableExtensions.<Edge>filter(_flatten, _function_7);
-              Iterables.<Edge>addAll(allEdges, edges);
-              final Function1<Edge, Node> _function_8 = (Edge it) -> {
-                return it.getTargetNode();
-              };
-              Iterable<Node> _map_1 = IterableExtensions.<Edge, Node>map(edges, _function_8);
-              final Function1<Node, Boolean> _function_9 = (Node it) -> {
-                return nodeFilter.apply(it);
-              };
-              Iterable<Node> _filter_2 = IterableExtensions.<Node>filter(_map_1, _function_9);
-              final Consumer<Node> _function_10 = (Node it) -> {
-                boolean _add = allNodes.add(it);
-                if (_add) {
-                  stack.addLast(it);
-                }
-              };
-              _filter_2.forEach(_function_10);
-              boolean _equals = Objects.equal(node, lastElementInDepth);
-              if (_equals) {
-                currentDepth++;
-                Node _xifexpression_2 = null;
-                boolean _isEmpty = stack.isEmpty();
-                boolean _not = (!_isEmpty);
-                if (_not) {
-                  _xifexpression_2 = stack.getLast();
-                }
-                lastElementInDepth = _xifexpression_2;
-                if ((((graphDepth).intValue() != DotGenerator.MAX_DEPTH) && (currentDepth >= (graphDepth).intValue()))) {
-                  stack.clear();
-                }
-              }
-            }
-          }
-          StringConcatenation _builder = new StringConcatenation();
-          String _name = view.getName();
-          _builder.append(_name, "");
-          _builder.append("_");
-          {
-            if (((graphDepth).intValue() != DotGenerator.MAX_DEPTH)) {
-              _builder.append(graphDepth, "");
-              _builder.append("_");
-            }
-          }
-          final String filePrefix = _builder.toString();
-          final Function1<Node, String> _function_5 = (Node node) -> {
-            String _name_1 = node.getName();
-            String _plus = (filePrefix + _name_1);
-            return (_plus + ".svg");
-          };
-          final Function1<? super Node, ? extends String> urlComputer = _function_5;
-          String _name_1 = contextNode.getName();
-          String _plus = (filePrefix + _name_1);
-          String _plus_1 = (_plus + ".dot");
-          CharSequence _generateDotFile = this.generateDotFile(allNodes, allEdges, urlComputer);
-          fsa.generateFile(_plus_1, _generateDotFile);
-          String _name_2 = contextNode.getName();
-          String _plus_2 = (filePrefix + _name_2);
-          baseFileNames.add(_plus_2);
-        }
-      }
-    };
-    _filter.forEach(_function_4);
-    return baseFileNames;
+  public List<String> generateView(final DotGenerator.ExpandedModel model, final View view, final IFileSystemAccess2 fsa) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Edge to Iterable<?>"
+      + "\nType mismatch: cannot convert from Edge to Iterable<?>");
   }
   
   public CharSequence generateDotFile(final HashSet<Node> nodes, final HashSet<Edge> edges, final Function1<? super Node, ? extends String> urlComputer) {

@@ -12,7 +12,7 @@ class HTMLGenerator extends AbstractGenerator {
 		val model = input.contents.head as Model
 
 		val fileName = input.URI.lastSegment.replace('.'+input.URI.fileExtension, '') + '.json'
-		
+		 
 	}
 	
 }

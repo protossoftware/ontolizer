@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import de.protos.ontolizer.generator.DotGenerator;
 import de.protos.ontolizer.generator.HTMLGenerator;
 import de.protos.ontolizer.generator.JSONGenerator;
+import de.protos.ontolizer.generator.ModelSerializer;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
@@ -23,6 +24,9 @@ public class OntolizerGenerator extends AbstractGenerator {
   private DotGenerator dotGenerator;
   
   @Inject
+  private ModelSerializer modelSerializer;
+  
+  @Inject
   private JSONGenerator jsonGenerator;
   
   @Inject
@@ -31,6 +35,7 @@ public class OntolizerGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     this.dotGenerator.doGenerate(resource, fsa, context);
+    this.modelSerializer.doGenerate(resource, fsa, context);
     this.jsonGenerator.doGenerate(resource, fsa, context);
     this.htmlGenerator.doGenerate(resource, fsa, context);
   }

@@ -27,10 +27,3 @@ Export-Package: de.protos.ontolizer.generator,
  de.protos.ontolizer.ontolizer.impl,
  de.protos.ontolizer.parser.antlr
 Import-Package: org.apache.log4j
-Bundle-ClassPath: lib/jackson-annotations-2.7.4-javadoc.jar,
- lib/jackson-annotations-2.7.4.jar,
- lib/jackson-core-2.7.4-javadoc.jar,
- lib/jackson-core-2.7.4.jar,
- lib/jackson-databind-2.7.4-javadoc.jar,
- lib/jackson-databind-2.7.4.jar,
- .

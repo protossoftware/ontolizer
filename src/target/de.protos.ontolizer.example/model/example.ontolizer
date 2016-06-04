@@ -2,10 +2,10 @@ View _global
 ;
 
 View Taxonomy
-	// a taxonomy displays only „isA“ edges for all node types (default)
+	// a taxonomy displays only "isA" edges for all node types (default)
 	edgeTypes isA
-;
-
+;   
+ 
 View CompanyKnowHow
 	// display only node feature with all edge types (default)
 	nodeTypes Feature
@@ -20,7 +20,7 @@ EdgeType implements ;
 
 EdgeType uses ;
 
-EdgeType includes ;
+EdgeType includes ;   
 
 // definition of node types and their appearance in dot graph
 NodeType Feature
@@ -42,7 +42,7 @@ Feature OntologyModeling
 Requirement Usability
 	includes Traceability
 	, VersionControl
-;
+; 
 
 Requirement Traceability
 ;

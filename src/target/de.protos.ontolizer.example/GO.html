@@ -1,0 +1,132 @@
+<html>
+  
+  <head>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="src-gen/example.js"></script>
+    <style>
+      circle.node {
+        stroke: #fff;
+        stroke-width: 1.5px;
+      }
+
+      line.link {
+        stroke: #999;
+        stroke-opacity: .6;
+      }
+
+      text.node {
+        font-family:Arial;
+        font-size:8pt;
+        font-weight:bold;
+        text-anchor:middle;
+        stroke:white;
+        stroke-width:0.3px;
+      }
+
+      a {
+        font-family:Arial;
+        font-size:10pt;
+      }
+</style>
+  </head>
+  
+  <body>
+    <br>
+    <a onclick='fixAllNodes();'>fix nodes</a> / <a onclick='unfixAllNodes();'>unfix nodes</a>
+    <br>
+    <a onclick='update("GO:0035070");'>salivary gland histolysis</a> - <a onclick='update("GO:0021873");'>forebrain neoblast division</a>
+    <br><br>
+    <div id="chart"></div>
+    <script type="text/javascript">
+
+    // creates a D3 structure that can be inputted into the force-directed graph
+	// layout
+    function createD3Structure(inputData) {
+      links = [];
+	  
+	  var nodeIdx, edgeList, targetIdx;
+	  for (nodeIdx = 0, count = inputData.length ; nodeIdx < count ; nodeIdx ++ ) {
+		for(edgeList in inputData[nodeIdx].edgeList){
+			for(var targetIdx in edgeList.edges){
+				var link = {
+						source : nodeIdx,
+						target : targetIdx,
+						type : edgeList.type,
+				};
+              links.push(link);
+	  }
+	  }
+	  }
+	  
+	  return {'nodes' : inputData, 'links' : links};
+    }      
+    
+    // drawing the graph
+    function drawGraph(struct) {
+      force
+        .nodes(struct.nodes)
+        .links(struct.links);
+
+      var link = svg.selectAll("line.link")
+        .data(struct.links)
+        .enter().append("line")
+        .attr("class", "link")
+        .style("stroke-width", 2);
+     
+      var node = svg.selectAll("circle.node")
+        .data(struct.nodes)
+        .enter().append("circle")
+        .attr("class", "node")
+        .call(force.drag);
+     
+      var nodeText = svg.selectAll("text.node")
+        .data(struct.nodes)
+        .enter().append("text")
+        .attr("class", "node")
+        .attr("displayState",'y')
+        // .style('display','none')
+        .text(function(d) { return d.name;});
+
+      force.start();
+    }
+
+    // recreate data structures and redraw graph with new nodes
+    function update() {
+	  var parsedData = JSON.parse(jsonData);
+      d3Data = createD3Structure(parsedData);
+
+      svg.selectAll("line.link").remove();
+      svg.selectAll("circle.node").remove();
+      svg.selectAll("text.node").remove();
+
+      drawGraph(d3Data);
+    }
+
+    // initializing statements
+    var width = 700;
+    var height = 600;
+
+    var force = d3.layout.force()
+      .charge(-3000)
+      .linkDistance(50)
+      .theta(0.2)
+      .gravity(1)
+      .size([width, height]);
+       
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width)
+      .attr("height", height);
+
+    svg.append('rect')
+      .style('fill','white')
+      .style('stroke','gray')
+      .attr('width',width)
+      .attr('height',height)
+      .attr('x',0)
+      .attr('y',0);
+
+    update();
+    </script>
+  </body>
+
+</html>
