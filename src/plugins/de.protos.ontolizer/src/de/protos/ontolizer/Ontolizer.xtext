@@ -39,7 +39,12 @@ View:
 	('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)?
 	('nodeTypes' nodeTypes+=[NodeType] (',' nodeTypes+=[NodeType])*)?
 	('node' node=[Node])?
+	('depth' depth=DepthRange)?
 	';'
+;
+
+DepthRange:
+	start=INT ('..' end=INT)?
 ;
 
 

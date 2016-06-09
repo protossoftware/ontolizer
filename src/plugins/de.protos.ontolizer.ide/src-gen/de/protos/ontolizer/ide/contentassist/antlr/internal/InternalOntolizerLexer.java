@@ -30,6 +30,8 @@ public class InternalOntolizerLexer extends Lexer {
     public static final int RULE_INT=6;
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
+    public static final int T__23=23;
+    public static final int T__24=24;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -296,15 +298,57 @@ public class InternalOntolizerLexer extends Lexer {
     }
     // $ANTLR end "T__22"
 
+    // $ANTLR start "T__23"
+    public final void mT__23() throws RecognitionException {
+        try {
+            int _type = T__23;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalOntolizer.g:23:7: ( 'depth' )
+            // InternalOntolizer.g:23:9: 'depth'
+            {
+            match("depth"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__23"
+
+    // $ANTLR start "T__24"
+    public final void mT__24() throws RecognitionException {
+        try {
+            int _type = T__24;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalOntolizer.g:24:7: ( '..' )
+            // InternalOntolizer.g:24:9: '..'
+            {
+            match(".."); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__24"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1852:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalOntolizer.g:1852:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalOntolizer.g:2111:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalOntolizer.g:2111:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalOntolizer.g:1852:11: ( '^' )?
+            // InternalOntolizer.g:2111:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -313,7 +357,7 @@ public class InternalOntolizerLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalOntolizer.g:1852:11: '^'
+                    // InternalOntolizer.g:2111:11: '^'
                     {
                     match('^'); 
 
@@ -331,7 +375,7 @@ public class InternalOntolizerLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalOntolizer.g:1852:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalOntolizer.g:2111:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -380,10 +424,10 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1854:10: ( ( '0' .. '9' )+ )
-            // InternalOntolizer.g:1854:12: ( '0' .. '9' )+
+            // InternalOntolizer.g:2113:10: ( ( '0' .. '9' )+ )
+            // InternalOntolizer.g:2113:12: ( '0' .. '9' )+
             {
-            // InternalOntolizer.g:1854:12: ( '0' .. '9' )+
+            // InternalOntolizer.g:2113:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -397,7 +441,7 @@ public class InternalOntolizerLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalOntolizer.g:1854:13: '0' .. '9'
+            	    // InternalOntolizer.g:2113:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -429,10 +473,10 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1856:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalOntolizer.g:1856:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalOntolizer.g:2115:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalOntolizer.g:2115:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalOntolizer.g:1856:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalOntolizer.g:2115:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -450,10 +494,10 @@ public class InternalOntolizerLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalOntolizer.g:1856:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalOntolizer.g:2115:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalOntolizer.g:1856:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalOntolizer.g:2115:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -469,7 +513,7 @@ public class InternalOntolizerLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalOntolizer.g:1856:21: '\\\\' .
+                    	    // InternalOntolizer.g:2115:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -477,7 +521,7 @@ public class InternalOntolizerLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalOntolizer.g:1856:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalOntolizer.g:2115:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -502,10 +546,10 @@ public class InternalOntolizerLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalOntolizer.g:1856:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalOntolizer.g:2115:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalOntolizer.g:1856:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalOntolizer.g:2115:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -521,7 +565,7 @@ public class InternalOntolizerLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalOntolizer.g:1856:54: '\\\\' .
+                    	    // InternalOntolizer.g:2115:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -529,7 +573,7 @@ public class InternalOntolizerLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalOntolizer.g:1856:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalOntolizer.g:2115:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -572,12 +616,12 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1858:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalOntolizer.g:1858:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalOntolizer.g:2117:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalOntolizer.g:2117:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalOntolizer.g:1858:24: ( options {greedy=false; } : . )*
+            // InternalOntolizer.g:2117:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -602,7 +646,7 @@ public class InternalOntolizerLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalOntolizer.g:1858:52: .
+            	    // InternalOntolizer.g:2117:52: .
             	    {
             	    matchAny(); 
 
@@ -632,12 +676,12 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1860:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalOntolizer.g:1860:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalOntolizer.g:2119:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalOntolizer.g:2119:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalOntolizer.g:1860:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalOntolizer.g:2119:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -650,7 +694,7 @@ public class InternalOntolizerLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalOntolizer.g:1860:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalOntolizer.g:2119:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -670,7 +714,7 @@ public class InternalOntolizerLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalOntolizer.g:1860:40: ( ( '\\r' )? '\\n' )?
+            // InternalOntolizer.g:2119:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -679,9 +723,9 @@ public class InternalOntolizerLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalOntolizer.g:1860:41: ( '\\r' )? '\\n'
+                    // InternalOntolizer.g:2119:41: ( '\\r' )? '\\n'
                     {
-                    // InternalOntolizer.g:1860:41: ( '\\r' )?
+                    // InternalOntolizer.g:2119:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -690,7 +734,7 @@ public class InternalOntolizerLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalOntolizer.g:1860:41: '\\r'
+                            // InternalOntolizer.g:2119:41: '\\r'
                             {
                             match('\r'); 
 
@@ -722,10 +766,10 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1862:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalOntolizer.g:1862:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalOntolizer.g:2121:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalOntolizer.g:2121:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalOntolizer.g:1862:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalOntolizer.g:2121:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -779,8 +823,8 @@ public class InternalOntolizerLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalOntolizer.g:1864:16: ( . )
-            // InternalOntolizer.g:1864:18: .
+            // InternalOntolizer.g:2123:16: ( . )
+            // InternalOntolizer.g:2123:18: .
             {
             matchAny(); 
 
@@ -795,8 +839,8 @@ public class InternalOntolizerLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // InternalOntolizer.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=19;
+        // InternalOntolizer.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=21;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -884,49 +928,63 @@ public class InternalOntolizerLexer extends Lexer {
                 }
                 break;
             case 13 :
-                // InternalOntolizer.g:1:82: RULE_ID
+                // InternalOntolizer.g:1:82: T__23
+                {
+                mT__23(); 
+
+                }
+                break;
+            case 14 :
+                // InternalOntolizer.g:1:88: T__24
+                {
+                mT__24(); 
+
+                }
+                break;
+            case 15 :
+                // InternalOntolizer.g:1:94: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 14 :
-                // InternalOntolizer.g:1:90: RULE_INT
+            case 16 :
+                // InternalOntolizer.g:1:102: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 15 :
-                // InternalOntolizer.g:1:99: RULE_STRING
+            case 17 :
+                // InternalOntolizer.g:1:111: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 16 :
-                // InternalOntolizer.g:1:111: RULE_ML_COMMENT
+            case 18 :
+                // InternalOntolizer.g:1:123: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 17 :
-                // InternalOntolizer.g:1:127: RULE_SL_COMMENT
+            case 19 :
+                // InternalOntolizer.g:1:139: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 18 :
-                // InternalOntolizer.g:1:143: RULE_WS
+            case 20 :
+                // InternalOntolizer.g:1:155: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 19 :
-                // InternalOntolizer.g:1:151: RULE_ANY_OTHER
+            case 21 :
+                // InternalOntolizer.g:1:163: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -940,58 +998,57 @@ public class InternalOntolizerLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\23\1\uffff\3\23\1\uffff\3\23\1\21\2\uffff\3\21\2\uffff\1\23\2\uffff\5\23\1\uffff\3\23\5\uffff\17\23\1\73\1\23\1\76\1\23\1\100\1\101\1\23\1\103\1\23\1\uffff\2\23\1\uffff\1\23\2\uffff\1\23\1\uffff\4\23\1\115\3\23\1\121\1\uffff\1\122\2\23\2\uffff\1\125\1\126\2\uffff";
+        "\1\uffff\1\25\1\uffff\3\25\1\uffff\4\25\2\23\2\uffff\3\23\2\uffff\1\25\2\uffff\5\25\1\uffff\4\25\6\uffff\20\25\1\101\1\25\1\104\2\25\1\107\1\110\1\25\1\112\1\25\1\uffff\2\25\1\uffff\1\116\1\25\2\uffff\1\25\1\uffff\3\25\1\uffff\1\25\1\125\3\25\1\131\1\uffff\1\132\2\25\2\uffff\1\135\1\136\2\uffff";
     static final String DFA12_eofS =
-        "\127\uffff";
+        "\137\uffff";
     static final String DFA12_minS =
-        "\1\0\1\157\1\uffff\1\150\1\157\1\144\1\uffff\1\151\1\144\1\157\1\101\2\uffff\2\0\1\52\2\uffff\1\144\2\uffff\1\141\1\171\1\155\1\154\1\147\1\uffff\1\145\1\147\1\144\5\uffff\1\145\1\160\1\154\1\155\1\157\1\145\1\167\2\145\1\124\2\145\1\141\1\162\1\124\1\60\1\124\1\60\1\171\2\60\1\162\1\60\1\171\1\uffff\2\171\1\uffff\1\160\2\uffff\1\171\1\uffff\3\160\1\145\1\60\3\145\1\60\1\uffff\1\60\2\163\2\uffff\2\60\2\uffff";
+        "\1\0\1\157\1\uffff\1\150\1\157\1\144\1\uffff\1\151\1\144\1\157\1\145\1\56\1\101\2\uffff\2\0\1\52\2\uffff\1\144\2\uffff\1\141\1\171\1\155\1\154\1\147\1\uffff\1\145\1\147\1\144\1\160\6\uffff\1\145\1\160\1\154\1\155\1\157\1\145\1\167\2\145\1\164\1\124\2\145\1\141\1\162\1\124\1\60\1\124\1\60\1\150\1\171\2\60\1\162\1\60\1\171\1\uffff\2\171\1\uffff\1\60\1\160\2\uffff\1\171\1\uffff\3\160\1\uffff\1\145\1\60\3\145\1\60\1\uffff\1\60\2\163\2\uffff\2\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\157\1\uffff\1\165\1\157\1\144\1\uffff\1\151\1\144\1\157\1\172\2\uffff\2\uffff\1\57\2\uffff\1\144\2\uffff\1\141\1\171\1\155\1\154\1\147\1\uffff\1\145\1\147\1\144\5\uffff\1\145\1\160\1\154\1\155\1\157\1\145\1\167\2\145\1\124\2\145\1\141\1\162\1\124\1\172\1\124\1\172\1\171\2\172\1\162\1\172\1\171\1\uffff\2\171\1\uffff\1\160\2\uffff\1\171\1\uffff\3\160\1\145\1\172\3\145\1\172\1\uffff\1\172\2\163\2\uffff\2\172\2\uffff";
+        "\1\uffff\1\157\1\uffff\1\165\1\157\1\144\1\uffff\1\151\1\144\1\157\1\145\1\56\1\172\2\uffff\2\uffff\1\57\2\uffff\1\144\2\uffff\1\141\1\171\1\155\1\154\1\147\1\uffff\1\145\1\147\1\144\1\160\6\uffff\1\145\1\160\1\154\1\155\1\157\1\145\1\167\2\145\1\164\1\124\2\145\1\141\1\162\1\124\1\172\1\124\1\172\1\150\1\171\2\172\1\162\1\172\1\171\1\uffff\2\171\1\uffff\1\172\1\160\2\uffff\1\171\1\uffff\3\160\1\uffff\1\145\1\172\3\145\1\172\1\uffff\1\172\2\163\2\uffff\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\3\uffff\1\10\4\uffff\1\15\1\16\3\uffff\1\22\1\23\1\uffff\1\15\1\2\5\uffff\1\10\3\uffff\1\16\1\17\1\20\1\21\1\22\30\uffff\1\11\2\uffff\1\14\1\uffff\1\3\1\5\1\uffff\1\4\11\uffff\1\7\3\uffff\1\1\1\6\2\uffff\1\12\1\13";
+        "\2\uffff\1\2\3\uffff\1\10\6\uffff\1\17\1\20\3\uffff\1\24\1\25\1\uffff\1\17\1\2\5\uffff\1\10\4\uffff\1\16\1\20\1\21\1\22\1\23\1\24\32\uffff\1\11\2\uffff\1\14\2\uffff\1\3\1\5\1\uffff\1\4\3\uffff\1\15\6\uffff\1\7\3\uffff\1\1\1\6\2\uffff\1\12\1\13";
     static final String DFA12_specialS =
-        "\1\2\14\uffff\1\0\1\1\110\uffff}>";
+        "\1\2\16\uffff\1\0\1\1\116\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\21\2\20\2\21\1\20\22\21\1\20\1\21\1\15\4\21\1\16\4\21\1\6\2\21\1\17\12\14\1\21\1\2\5\21\4\13\1\5\10\13\1\1\7\13\1\7\4\13\3\21\1\12\1\13\1\21\2\13\1\4\1\13\1\10\10\13\1\11\4\13\1\3\7\13\uff85\21",
-            "\1\22",
+            "\11\23\2\22\2\23\1\22\22\23\1\22\1\23\1\17\4\23\1\20\4\23\1\6\1\23\1\13\1\21\12\16\1\23\1\2\5\23\4\15\1\5\10\15\1\1\7\15\1\7\4\15\3\23\1\14\1\15\1\23\2\15\1\4\1\12\1\10\10\15\1\11\4\15\1\3\7\15\uff85\23",
+            "\1\24",
             "",
-            "\1\25\13\uffff\1\26\1\27",
-            "\1\30",
-            "\1\31",
-            "",
+            "\1\27\13\uffff\1\30\1\31",
+            "\1\32",
             "\1\33",
-            "\1\34",
+            "",
             "\1\35",
-            "\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\36",
+            "\1\37",
+            "\1\40",
+            "\1\41",
+            "\32\25\4\uffff\1\25\1\uffff\32\25",
             "",
             "",
-            "\0\37",
-            "\0\37",
-            "\1\40\4\uffff\1\41",
+            "\0\43",
+            "\0\43",
+            "\1\44\4\uffff\1\45",
             "",
             "",
-            "\1\43",
-            "",
-            "",
-            "\1\44",
-            "\1\45",
-            "\1\46",
             "\1\47",
-            "\1\50",
             "",
+            "",
+            "\1\50",
             "\1\51",
             "\1\52",
             "\1\53",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\54",
+            "",
             "\1\55",
             "\1\56",
             "\1\57",
             "\1\60",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\61",
             "\1\62",
             "\1\63",
@@ -1002,41 +1059,50 @@ public class InternalOntolizerLexer extends Lexer {
             "\1\70",
             "\1\71",
             "\1\72",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\73",
             "\1\74",
-            "\12\23\7\uffff\23\23\1\75\6\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\75",
+            "\1\76",
             "\1\77",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\100",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
             "\1\102",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\1\104",
-            "",
+            "\12\25\7\uffff\23\25\1\103\6\25\4\uffff\1\25\1\uffff\32\25",
             "\1\105",
             "\1\106",
-            "",
-            "\1\107",
-            "",
-            "",
-            "\1\110",
-            "",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
             "\1\111",
-            "\1\112",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
             "\1\113",
+            "",
             "\1\114",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\1\116",
+            "\1\115",
+            "",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
             "\1\117",
+            "",
+            "",
             "\1\120",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
             "",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\1\121",
+            "\1\122",
             "\1\123",
+            "",
             "\1\124",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
+            "\1\126",
+            "\1\127",
+            "\1\130",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
+            "",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
+            "\1\133",
+            "\1\134",
             "",
             "",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
-            "\12\23\7\uffff\32\23\4\uffff\1\23\1\uffff\32\23",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
+            "\12\25\7\uffff\32\25\4\uffff\1\25\1\uffff\32\25",
             "",
             ""
     };
@@ -1071,29 +1137,29 @@ public class InternalOntolizerLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_13 = input.LA(1);
+                        int LA12_15 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_13>='\u0000' && LA12_13<='\uFFFF')) ) {s = 31;}
+                        if ( ((LA12_15>='\u0000' && LA12_15<='\uFFFF')) ) {s = 35;}
 
-                        else s = 17;
+                        else s = 19;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_14 = input.LA(1);
+                        int LA12_16 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_14>='\u0000' && LA12_14<='\uFFFF')) ) {s = 31;}
+                        if ( ((LA12_16>='\u0000' && LA12_16<='\uFFFF')) ) {s = 35;}
 
-                        else s = 17;
+                        else s = 19;
 
                         if ( s>=0 ) return s;
                         break;
@@ -1119,21 +1185,25 @@ public class InternalOntolizerLexer extends Lexer {
 
                         else if ( (LA12_0=='n') ) {s = 9;}
 
-                        else if ( (LA12_0=='^') ) {s = 10;}
+                        else if ( (LA12_0=='d') ) {s = 10;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='D')||(LA12_0>='F' && LA12_0<='M')||(LA12_0>='O' && LA12_0<='U')||(LA12_0>='W' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='b')||LA12_0=='d'||(LA12_0>='f' && LA12_0<='m')||(LA12_0>='o' && LA12_0<='r')||(LA12_0>='t' && LA12_0<='z')) ) {s = 11;}
+                        else if ( (LA12_0=='.') ) {s = 11;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 12;}
+                        else if ( (LA12_0=='^') ) {s = 12;}
 
-                        else if ( (LA12_0=='\"') ) {s = 13;}
+                        else if ( ((LA12_0>='A' && LA12_0<='D')||(LA12_0>='F' && LA12_0<='M')||(LA12_0>='O' && LA12_0<='U')||(LA12_0>='W' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='b')||(LA12_0>='f' && LA12_0<='m')||(LA12_0>='o' && LA12_0<='r')||(LA12_0>='t' && LA12_0<='z')) ) {s = 13;}
 
-                        else if ( (LA12_0=='\'') ) {s = 14;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 14;}
 
-                        else if ( (LA12_0=='/') ) {s = 15;}
+                        else if ( (LA12_0=='\"') ) {s = 15;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 16;}
+                        else if ( (LA12_0=='\'') ) {s = 16;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='+')||(LA12_0>='-' && LA12_0<='.')||LA12_0==':'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 17;}
+                        else if ( (LA12_0=='/') ) {s = 17;}
+
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 18;}
+
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='(' && LA12_0<='+')||LA12_0=='-'||LA12_0==':'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='\uFFFF')) ) {s = 19;}
 
                         if ( s>=0 ) return s;
                         break;
