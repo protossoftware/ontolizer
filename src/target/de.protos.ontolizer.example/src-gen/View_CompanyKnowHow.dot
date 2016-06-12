@@ -1,7 +1,0 @@
-
-digraph {
-	OntologyModeling [shape=rectangle,fillcolor=lightblue,style=filled];				
-	TextualSyntax [label="TextualSyntax\n[Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
-				This can be versioned, branched and merged 
-				with any version control system (e.g. Subversion , GIT, ...)]" shape=rectangle,fillcolor=lightblue,style=filled];				
-}
