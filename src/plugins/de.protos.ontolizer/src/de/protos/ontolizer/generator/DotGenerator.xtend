@@ -1,5 +1,6 @@
 package de.protos.ontolizer.generator
 
+import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.Multimap
 import com.google.common.collect.Multimaps
 import de.protos.ontolizer.ontolizer.Edge
@@ -8,6 +9,7 @@ import de.protos.ontolizer.ontolizer.Model
 import de.protos.ontolizer.ontolizer.Node
 import de.protos.ontolizer.ontolizer.View
 import java.util.List
+import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtend.lib.annotations.Delegate
@@ -15,15 +17,19 @@ import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.xbase.lib.Functions.Function2
-import java.util.Map
 
 class DotGenerator extends AbstractGenerator {
 	
-	static val NEWLINE = System.lineSeparator // os line separator
 	/**
 	 * Default value in emf model.
 	 */
 	static val DEPTH_DEFAULT_VALUE = 0
+	
+	static class GenerationResults {
+		val dotBaseFileNames = <String>newArrayList
+		val globalViewLinks = <View, String>newLinkedHashMap
+		val depthViewLinks = <View, Multimap<Node, Pair<Integer, String>>>newLinkedHashMap
+	}
 	
 	@Accessors
 	static class ExpandedModel implements Model {
@@ -39,12 +45,13 @@ class DotGenerator extends AbstractGenerator {
 	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val baseFileNames = <String>newArrayList
+		val results = new GenerationResults
 		
 		val model = new ExpandedModel(resource.contents.head as Model)
-		baseFileNames += model.views.map[generateView(model, it, fsa)].flatten
-
-		generateAntBuildfile(baseFileNames, fsa)
+		model.views.forEach[generateView(model, it, fsa, results)]
+		
+		fsa.generateFile("build.xml", generateDotBuildfileContent(results.dotBaseFileNames))
+		fsa.generateFile('''!«resource.URI.lastSegment».html''', generateTocFileContents(results.globalViewLinks, results.depthViewLinks))	
 	}
 	
 	def static <T> void bfs(Iterable<T> iterable, Function2<? super T, ? super Integer, Iterable<? extends T>> visitFunction) {
@@ -63,18 +70,16 @@ class DotGenerator extends AbstractGenerator {
 		}
 	}
 	
-	def List<String> generateView(ExpandedModel model, View view, IFileSystemAccess2 fsa){
-		val List<String> baseFileNames = newArrayList
-		
+	def void generateView(ExpandedModel model, View view, IFileSystemAccess2 fsa, GenerationResults results){		
 		val (Node) => boolean nodeFilter = [node | view.nodeTypes.empty || view.nodeTypes.contains(node.nodeType)]
-		val (Edge) => boolean edgeFilter = [edge | view.edgeTypes.empty || view.edgeTypes.contains(edge.eContainer)]
+		val (Edge) => boolean edgeFilter = [edge | view.edgeTypes.empty || view.edgeTypes.contains((edge.eContainer as EdgeList).edgeType)]
 		val contextNodes = model.nodes.filter[nodeFilter.apply(it)]
 		
 		if(view.depth == null || view.depth.start == 0){
 			// generate single graph without clickMap
 			val graphDepth = if(view.depth == null) 1 else view.depth.start
 			val graphNodes = newArrayList
-			val graphEdges = newArrayList
+			val graphEdges = newHashSet
 			contextNodes.bfs[node, depth |
 				graphNodes += node
 				if(depth >= graphDepth) return emptyList
@@ -85,10 +90,12 @@ class DotGenerator extends AbstractGenerator {
 				return (forwardEdges.map[targetNode] + backwardEdges.map[eContainer.eContainer as Node]).filter[nodeFilter.apply(it)]
 			]
 			
-			fsa.generateFile('''«view.name».dot''', generateDotFile(graphNodes, graphEdges, null))
-			baseFileNames += view.name
+			fsa.generateFile('''«view.name».dot''', generateDotFile(graphNodes, graphEdges, [node| node.getDotFormatAttributes(false)]))
+			results.dotBaseFileNames += view.name
+			results.globalViewLinks.put(view, view.name + '.svg')
 			
 		} else {
+			results.depthViewLinks.put(view, ArrayListMultimap.create)
 			// generate graphs with context nodes per depth and with clickMap
 			contextNodes.forEach[contextNode |
 				val depthEnd = if(view.depth.end == DEPTH_DEFAULT_VALUE) view.depth.start else view.depth.end
@@ -99,10 +106,9 @@ class DotGenerator extends AbstractGenerator {
 				for (graphDepth : view.depth.start .. depthEnd)
 					depthToc.put(graphDepth, filePrefixComputer.apply(graphDepth) + contextNode.name + '.html')
 				
-				var lastEdgeCount = 0
 				for (graphDepth : view.depth.start .. depthEnd) {
 					val graphNodes = newArrayList
-					val graphEdges = newArrayList
+					val graphEdges = newHashSet
 					#[contextNode].bfs[node, depth | 
 						graphNodes += node
 						if(depth >= graphDepth) return emptyList
@@ -114,45 +120,28 @@ class DotGenerator extends AbstractGenerator {
 					]
 					
 					val filePrefix = filePrefixComputer.apply(graphDepth)
-					val (Node)=>String urlComputer = [node|filePrefix + node.name + '.svg']
-					fsa.generateFile(filePrefix + contextNode.name + '.dot', generateDotFile(graphNodes, graphEdges, urlComputer))
-					fsa.generateFile(filePrefix + contextNode.name + '.html', generateGraphHTML(urlComputer.apply(contextNode), depthToc))
-					baseFileNames += filePrefix + contextNode.name
-					
-					// check if max depth has been reached
-					if(lastEdgeCount >= graphEdges.size)
-						return;
-					lastEdgeCount = graphEdges.size
+					val contextNodeBaseFileName = filePrefix + contextNode.name
+					val (Node)=>Iterable<String> propComputer = [node| node.getDotFormatAttributes(node == contextNode) + #['URL="' + filePrefix + node.name + '.svg"']]
+					fsa.generateFile(contextNodeBaseFileName + '.dot', generateDotFile(graphNodes, graphEdges, propComputer))
+					fsa.generateFile(contextNodeBaseFileName + '.html', generateGraphHTML(contextNodeBaseFileName + '.svg', depthToc))
+					results.dotBaseFileNames += contextNodeBaseFileName
+					results.depthViewLinks.get(view).put(contextNode, graphDepth -> contextNodeBaseFileName + '.html')
 				}
 			]
 		}
-		
-		return baseFileNames
 	}
 	
-	def generateDotFile(Iterable<Node> nodes, Iterable<Edge> edges, (Node) => String urlComputer) {
-		val dotEntries = newArrayList
-		dotEntries += nodes.map[genDot(urlComputer?.apply(it))]
-		dotEntries += edges.map[genDot]
-		
-		'''
-			digraph {
-				«dotEntries.join(NEWLINE)»
-			}
-		'''
-	}
-	
+	def generateDotFile(Iterable<Node> nodes, Iterable<Edge> edges, (Node) => Iterable<String> propComputer)'''
+		digraph {
+			«FOR node : nodes»
+				«node.name» [«propComputer.apply(node).join(', ')»];
+			«ENDFOR»
+			«FOR edge : edges»
+				«edge.genDot»
+			«ENDFOR»
+		}
+	'''
 
-	def CharSequence genDot(Node it, String url){
-		val entries = newArrayList
-		entries += dotFormatAttributes
-		if(!summary.nullOrEmpty)
-			entries += '''label="«name»\n«summary»"'''
-		if(!url.nullOrEmpty)
-			entries += '''URL="«url»"'''
-		
-		'''«name» [«entries.join(', ')»];'''
-	}
 	
 	def CharSequence genDot(Edge it){
 		val entries = newArrayList
@@ -175,24 +164,56 @@ class DotGenerator extends AbstractGenerator {
 //			}
 //	'''
 
-	def getDotFormatAttributes(Node node) {
-
+	def getDotFormatAttributes(Node it, boolean highlight) {
 		val formatList = newArrayList()
-		if (!node.nodeType.shape.nullOrEmpty)
-			formatList += 'shape=' + node.nodeType.shape
+		
+		if(!summary.nullOrEmpty)
+			formatList += '''label="«name»\n«summary»"'''
+		
+		if (!nodeType.shape.nullOrEmpty)
+			formatList += 'shape=' + nodeType.shape
 
-		if (!node.nodeType.color.nullOrEmpty)
-			formatList += 'fillcolor=' + node.nodeType.color
+		if (highlight)
+			formatList += 'fillcolor=red'
+		else if (!nodeType.color.nullOrEmpty)
+			formatList += 'fillcolor=' + nodeType.color
 
-		if (!node.nodeType.style.nullOrEmpty)
-			formatList += 'style=' + node.nodeType.style
+		if (!nodeType.style.nullOrEmpty)
+			formatList += 'style=' + nodeType.style
 
-		formatList.filter[s|!s.empty].join(',')
+		return formatList.filter[s|!s.empty]
 	}
-
-	def private generateAntBuildfile(List<String> baseFileNames, IFileSystemAccess2 fsa) {
-		fsa.generateFile("build.xml", generateDotBuildfileContent(baseFileNames))
-	}
+	
+	def private generateTocFileContents(Map<View, String> globalViewLinks, Map<View, Multimap<Node, Pair<Integer, String>>> depthViewLinks)'''
+		<head>
+		    <meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+		
+			<!-- stylesheet -->
+		    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+		    <link href="../lib/bootstrap.css" rel="stylesheet">
+		    <style> a:visited{color:#666633 !important;}</style>
+		</head>
+		<body>
+			<h2>Views</h2>
+			<ul>
+			«FOR viewEntry : globalViewLinks.entrySet»
+				<li><a href="«viewEntry.value»">«viewEntry.key.name»</a></li>
+			«ENDFOR»
+			«FOR viewEntry : depthViewLinks.entrySet»
+				<li>«viewEntry.key.name»
+					<ul>
+					«FOR contextNode: viewEntry.value.keySet»
+						<li>«contextNode.name»: «FOR depthLink : viewEntry.value.get(contextNode) SEPARATOR ', '»<a href="«depthLink.value»">«depthLink.key»</a>«ENDFOR»</li>
+					«ENDFOR»
+					</ul>
+				</li>
+			«ENDFOR»
+			</ul>
+			</body>
+		</html>
+	'''
 
 	// ant buildfile generator for dot	
 	def private generateDotBuildfileContent(List<String> baseFileNames) '''
@@ -240,8 +261,19 @@ class DotGenerator extends AbstractGenerator {
 	
 	def private generateGraphHTML(String svgFilePath, Map<Integer, String> depthFilePaths)'''
 		<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-			<script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+		    <meta charset="utf-8">
+		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<!-- stylesheet -->
+			<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+		    <link href="../lib/bootstrap.css" rel="stylesheet">
+		    <style> a:visited{color:#666633 !important;}</style>
+		    
+		    <!-- javascript -->
+			<!--<script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>-->
+			<script src="../lib/jquery-3.0.0.min.js"></script>
+			
 			<script>
 			 $(function(){
 			      $("#includedContent").load("«svgFilePath»", function() {
