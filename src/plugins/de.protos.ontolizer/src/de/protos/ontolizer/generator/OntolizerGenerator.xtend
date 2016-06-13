@@ -19,12 +19,10 @@ class OntolizerGenerator extends AbstractGenerator {
 	@Inject DotGenerator dotGenerator
 	@Inject ModelSerializer modelSerializer
 	@Inject JSONGenerator jsonGenerator
-	@Inject HTMLGenerator htmlGenerator
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		dotGenerator.doGenerate(resource, fsa, context)
 		modelSerializer.doGenerate(resource, fsa, context)
 		jsonGenerator.doGenerate(resource, fsa, context)
-		htmlGenerator.doGenerate(resource, fsa, context)
 	}
 }

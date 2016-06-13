@@ -638,35 +638,16 @@ ruleView returns [EObject current=null]
 			)*
 		)?
 		(
-			otherlv_10='node'
+			otherlv_10='depth'
 			{
-				newLeafNode(otherlv_10, grammarAccess.getViewAccess().getNodeKeyword_4_0());
+				newLeafNode(otherlv_10, grammarAccess.getViewAccess().getDepthKeyword_4_0());
 			}
 			(
 				(
 					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getViewRule());
-						}
+						newCompositeNode(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_4_1_0());
 					}
-					otherlv_11=RULE_ID
-					{
-						newLeafNode(otherlv_11, grammarAccess.getViewAccess().getNodeNodeCrossReference_4_1_0());
-					}
-				)
-			)
-		)?
-		(
-			otherlv_12='depth'
-			{
-				newLeafNode(otherlv_12, grammarAccess.getViewAccess().getDepthKeyword_5_0());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_5_1_0());
-					}
-					lv_depth_13_0=ruleDepthRange
+					lv_depth_11_0=ruleDepthRange
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getViewRule());
@@ -674,16 +655,16 @@ ruleView returns [EObject current=null]
 						set(
 							$current,
 							"depth",
-							lv_depth_13_0,
+							lv_depth_11_0,
 							"de.protos.ontolizer.Ontolizer.DepthRange");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)?
-		otherlv_14=';'
+		otherlv_12=';'
 		{
-			newLeafNode(otherlv_14, grammarAccess.getViewAccess().getSemicolonKeyword_6());
+			newLeafNode(otherlv_12, grammarAccess.getViewAccess().getSemicolonKeyword_5());
 		}
 	)
 ;

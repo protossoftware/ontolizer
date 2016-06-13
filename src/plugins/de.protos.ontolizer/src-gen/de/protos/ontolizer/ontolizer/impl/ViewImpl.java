@@ -5,7 +5,6 @@ package de.protos.ontolizer.ontolizer.impl;
 
 import de.protos.ontolizer.ontolizer.DepthRange;
 import de.protos.ontolizer.ontolizer.EdgeType;
-import de.protos.ontolizer.ontolizer.Node;
 import de.protos.ontolizer.ontolizer.NodeType;
 import de.protos.ontolizer.ontolizer.OntolizerPackage;
 import de.protos.ontolizer.ontolizer.View;
@@ -36,7 +35,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link de.protos.ontolizer.ontolizer.impl.ViewImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.protos.ontolizer.ontolizer.impl.ViewImpl#getEdgeTypes <em>Edge Types</em>}</li>
  *   <li>{@link de.protos.ontolizer.ontolizer.impl.ViewImpl#getNodeTypes <em>Node Types</em>}</li>
- *   <li>{@link de.protos.ontolizer.ontolizer.impl.ViewImpl#getNode <em>Node</em>}</li>
  *   <li>{@link de.protos.ontolizer.ontolizer.impl.ViewImpl#getDepth <em>Depth</em>}</li>
  * </ul>
  *
@@ -83,16 +81,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
    * @ordered
    */
   protected EList<NodeType> nodeTypes;
-
-  /**
-   * The cached value of the '{@link #getNode() <em>Node</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getNode()
-   * @generated
-   * @ordered
-   */
-  protected Node node;
 
   /**
    * The cached value of the '{@link #getDepth() <em>Depth</em>}' containment reference.
@@ -181,49 +169,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
    * <!-- end-user-doc -->
    * @generated
    */
-  public Node getNode()
-  {
-    if (node != null && node.eIsProxy())
-    {
-      InternalEObject oldNode = (InternalEObject)node;
-      node = (Node)eResolveProxy(oldNode);
-      if (node != oldNode)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OntolizerPackage.VIEW__NODE, oldNode, node));
-      }
-    }
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Node basicGetNode()
-  {
-    return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setNode(Node newNode)
-  {
-    Node oldNode = node;
-    node = newNode;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OntolizerPackage.VIEW__NODE, oldNode, node));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public DepthRange getDepth()
   {
     return depth;
@@ -299,9 +244,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
         return getEdgeTypes();
       case OntolizerPackage.VIEW__NODE_TYPES:
         return getNodeTypes();
-      case OntolizerPackage.VIEW__NODE:
-        if (resolve) return getNode();
-        return basicGetNode();
       case OntolizerPackage.VIEW__DEPTH:
         return getDepth();
     }
@@ -330,9 +272,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
         getNodeTypes().clear();
         getNodeTypes().addAll((Collection<? extends NodeType>)newValue);
         return;
-      case OntolizerPackage.VIEW__NODE:
-        setNode((Node)newValue);
-        return;
       case OntolizerPackage.VIEW__DEPTH:
         setDepth((DepthRange)newValue);
         return;
@@ -359,9 +298,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
       case OntolizerPackage.VIEW__NODE_TYPES:
         getNodeTypes().clear();
         return;
-      case OntolizerPackage.VIEW__NODE:
-        setNode((Node)null);
-        return;
       case OntolizerPackage.VIEW__DEPTH:
         setDepth((DepthRange)null);
         return;
@@ -385,8 +321,6 @@ public class ViewImpl extends MinimalEObjectImpl.Container implements View
         return edgeTypes != null && !edgeTypes.isEmpty();
       case OntolizerPackage.VIEW__NODE_TYPES:
         return nodeTypes != null && !nodeTypes.isEmpty();
-      case OntolizerPackage.VIEW__NODE:
-        return node != null;
       case OntolizerPackage.VIEW__DEPTH:
         return depth != null;
     }

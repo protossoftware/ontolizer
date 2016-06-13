@@ -324,24 +324,19 @@ public class OntolizerGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cNodeTypesNodeTypeCrossReference_3_2_1_0 = (CrossReference)cNodeTypesAssignment_3_2_1.eContents().get(0);
 		private final RuleCall cNodeTypesNodeTypeIDTerminalRuleCall_3_2_1_0_1 = (RuleCall)cNodeTypesNodeTypeCrossReference_3_2_1_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cNodeKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cNodeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cNodeNodeCrossReference_4_1_0 = (CrossReference)cNodeAssignment_4_1.eContents().get(0);
-		private final RuleCall cNodeNodeIDTerminalRuleCall_4_1_0_1 = (RuleCall)cNodeNodeCrossReference_4_1_0.eContents().get(1);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cDepthKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cDepthAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cDepthDepthRangeParserRuleCall_5_1_0 = (RuleCall)cDepthAssignment_5_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Keyword cDepthKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cDepthAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cDepthDepthRangeParserRuleCall_4_1_0 = (RuleCall)cDepthAssignment_4_1.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//View:
 		//	'View' name=ID ('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)? ('nodeTypes' nodeTypes+=[NodeType]
-		//	(',' nodeTypes+=[NodeType])*)? ('node' node=[Node])? ('depth' depth=DepthRange)?
+		//	(',' nodeTypes+=[NodeType])*)? ('depth' depth=DepthRange)?
 		//	';';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'View' name=ID ('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)? ('nodeTypes' nodeTypes+=[NodeType] (','
-		//nodeTypes+=[NodeType])*)? ('node' node=[Node])? ('depth' depth=DepthRange)? ';'
+		//nodeTypes+=[NodeType])*)? ('depth' depth=DepthRange)? ';'
 		public Group getGroup() { return cGroup; }
 		
 		//'View'
@@ -413,35 +408,20 @@ public class OntolizerGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNodeTypesNodeTypeIDTerminalRuleCall_3_2_1_0_1() { return cNodeTypesNodeTypeIDTerminalRuleCall_3_2_1_0_1; }
 		
-		//('node' node=[Node])?
+		//('depth' depth=DepthRange)?
 		public Group getGroup_4() { return cGroup_4; }
 		
-		//'node'
-		public Keyword getNodeKeyword_4_0() { return cNodeKeyword_4_0; }
-		
-		//node=[Node]
-		public Assignment getNodeAssignment_4_1() { return cNodeAssignment_4_1; }
-		
-		//[Node]
-		public CrossReference getNodeNodeCrossReference_4_1_0() { return cNodeNodeCrossReference_4_1_0; }
-		
-		//ID
-		public RuleCall getNodeNodeIDTerminalRuleCall_4_1_0_1() { return cNodeNodeIDTerminalRuleCall_4_1_0_1; }
-		
-		//('depth' depth=DepthRange)?
-		public Group getGroup_5() { return cGroup_5; }
-		
 		//'depth'
-		public Keyword getDepthKeyword_5_0() { return cDepthKeyword_5_0; }
+		public Keyword getDepthKeyword_4_0() { return cDepthKeyword_4_0; }
 		
 		//depth=DepthRange
-		public Assignment getDepthAssignment_5_1() { return cDepthAssignment_5_1; }
+		public Assignment getDepthAssignment_4_1() { return cDepthAssignment_4_1; }
 		
 		//DepthRange
-		public RuleCall getDepthDepthRangeParserRuleCall_5_1_0() { return cDepthDepthRangeParserRuleCall_5_1_0; }
+		public RuleCall getDepthDepthRangeParserRuleCall_4_1_0() { return cDepthDepthRangeParserRuleCall_4_1_0; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 	public class DepthRangeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.protos.ontolizer.Ontolizer.DepthRange");
@@ -601,7 +581,7 @@ public class OntolizerGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//View:
 	//	'View' name=ID ('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)? ('nodeTypes' nodeTypes+=[NodeType]
-	//	(',' nodeTypes+=[NodeType])*)? ('node' node=[Node])? ('depth' depth=DepthRange)?
+	//	(',' nodeTypes+=[NodeType])*)? ('depth' depth=DepthRange)?
 	//	';';
 	public ViewElements getViewAccess() {
 		return pView;

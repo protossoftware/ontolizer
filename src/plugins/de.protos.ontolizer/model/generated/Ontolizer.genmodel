@@ -38,7 +38,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ontolizer.ecore#//View/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ontolizer.ecore#//View/edgeTypes"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ontolizer.ecore#//View/nodeTypes"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ontolizer.ecore#//View/node"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ontolizer.ecore#//View/depth"/>
     </genClasses>
     <genClasses ecoreClass="Ontolizer.ecore#//DepthRange">

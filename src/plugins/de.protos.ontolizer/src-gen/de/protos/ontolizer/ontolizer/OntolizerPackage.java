@@ -353,22 +353,13 @@ public interface OntolizerPackage extends EPackage
   int VIEW__NODE_TYPES = 2;
 
   /**
-   * The feature id for the '<em><b>Node</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VIEW__NODE = 3;
-
-  /**
    * The feature id for the '<em><b>Depth</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEW__DEPTH = 4;
+  int VIEW__DEPTH = 3;
 
   /**
    * The number of structural features of the '<em>View</em>' class.
@@ -377,7 +368,7 @@ public interface OntolizerPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VIEW_FEATURE_COUNT = 5;
+  int VIEW_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.protos.ontolizer.ontolizer.impl.DepthRangeImpl <em>Depth Range</em>}' class.
@@ -697,17 +688,6 @@ public interface OntolizerPackage extends EPackage
   EReference getView_NodeTypes();
 
   /**
-   * Returns the meta object for the reference '{@link de.protos.ontolizer.ontolizer.View#getNode <em>Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Node</em>'.
-   * @see de.protos.ontolizer.ontolizer.View#getNode()
-   * @see #getView()
-   * @generated
-   */
-  EReference getView_Node();
-
-  /**
    * Returns the meta object for the containment reference '{@link de.protos.ontolizer.ontolizer.View#getDepth <em>Depth</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -994,14 +974,6 @@ public interface OntolizerPackage extends EPackage
      * @generated
      */
     EReference VIEW__NODE_TYPES = eINSTANCE.getView_NodeTypes();
-
-    /**
-     * The meta object literal for the '<em><b>Node</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VIEW__NODE = eINSTANCE.getView_Node();
 
     /**
      * The meta object literal for the '<em><b>Depth</b></em>' containment reference feature.

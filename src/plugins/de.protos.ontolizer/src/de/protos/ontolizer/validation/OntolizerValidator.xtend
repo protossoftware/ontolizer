@@ -3,6 +3,9 @@
  */
 package de.protos.ontolizer.validation
 
+import de.protos.ontolizer.ontolizer.DepthRange
+import de.protos.ontolizer.ontolizer.OntolizerPackage.Literals
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +24,12 @@ class OntolizerValidator extends AbstractOntolizerValidator {
 //					INVALID_NAME)
 //		}
 //	}
-	
+
+	@Check
+	def checkDepthRange(DepthRange it){
+		if(start == 0)
+			warning("default '0' represents infinite depth, statement is expendable", it, Literals.DEPTH_RANGE__START)
+		else if(end != 0 && start > end)
+			error('depth must be an numeric interval', it, null)
+	}
 }

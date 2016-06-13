@@ -413,19 +413,9 @@ public class OntolizerPackageImpl extends EPackageImpl implements OntolizerPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getView_Node()
-  {
-    return (EReference)viewEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getView_Depth()
   {
-    return (EReference)viewEClass.getEStructuralFeatures().get(4);
+    return (EReference)viewEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -520,7 +510,6 @@ public class OntolizerPackageImpl extends EPackageImpl implements OntolizerPacka
     createEAttribute(viewEClass, VIEW__NAME);
     createEReference(viewEClass, VIEW__EDGE_TYPES);
     createEReference(viewEClass, VIEW__NODE_TYPES);
-    createEReference(viewEClass, VIEW__NODE);
     createEReference(viewEClass, VIEW__DEPTH);
 
     depthRangeEClass = createEClass(DEPTH_RANGE);
@@ -591,7 +580,6 @@ public class OntolizerPackageImpl extends EPackageImpl implements OntolizerPacka
     initEAttribute(getView_Name(), ecorePackage.getEString(), "name", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getView_EdgeTypes(), this.getEdgeType(), null, "edgeTypes", null, 0, -1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getView_NodeTypes(), this.getNodeType(), null, "nodeTypes", null, 0, -1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getView_Node(), this.getNode(), null, "node", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getView_Depth(), this.getDepthRange(), null, "depth", null, 0, 1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(depthRangeEClass, DepthRange.class, "DepthRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalOntolizerParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'NodeType'", "';'", "'shape'", "'color'", "'style'", "'EdgeType'", "'summary'", "','", "'View'", "'edgeTypes'", "'nodeTypes'", "'node'", "'depth'", "'..'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'NodeType'", "';'", "'shape'", "'color'", "'style'", "'EdgeType'", "'summary'", "','", "'View'", "'edgeTypes'", "'nodeTypes'", "'depth'", "'..'"
     };
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=8;
@@ -43,7 +43,6 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
     public static final int T__22=22;
     public static final int RULE_ML_COMMENT=7;
     public static final int T__23=23;
-    public static final int T__24=24;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -3557,22 +3556,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group__5"
-    // InternalOntolizer.g:1149:1: rule__View__Group__5 : rule__View__Group__5__Impl rule__View__Group__6 ;
+    // InternalOntolizer.g:1149:1: rule__View__Group__5 : rule__View__Group__5__Impl ;
     public final void rule__View__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1153:1: ( rule__View__Group__5__Impl rule__View__Group__6 )
-            // InternalOntolizer.g:1154:2: rule__View__Group__5__Impl rule__View__Group__6
+            // InternalOntolizer.g:1153:1: ( rule__View__Group__5__Impl )
+            // InternalOntolizer.g:1154:2: rule__View__Group__5__Impl
             {
-            pushFollow(FOLLOW_13);
-            rule__View__Group__5__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__View__Group__6();
+            rule__View__Group__5__Impl();
 
             state._fsp--;
 
@@ -3595,42 +3589,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group__5__Impl"
-    // InternalOntolizer.g:1161:1: rule__View__Group__5__Impl : ( ( rule__View__Group_5__0 )? ) ;
+    // InternalOntolizer.g:1160:1: rule__View__Group__5__Impl : ( ';' ) ;
     public final void rule__View__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1165:1: ( ( ( rule__View__Group_5__0 )? ) )
-            // InternalOntolizer.g:1166:1: ( ( rule__View__Group_5__0 )? )
+            // InternalOntolizer.g:1164:1: ( ( ';' ) )
+            // InternalOntolizer.g:1165:1: ( ';' )
             {
-            // InternalOntolizer.g:1166:1: ( ( rule__View__Group_5__0 )? )
-            // InternalOntolizer.g:1167:2: ( rule__View__Group_5__0 )?
+            // InternalOntolizer.g:1165:1: ( ';' )
+            // InternalOntolizer.g:1166:2: ';'
             {
-             before(grammarAccess.getViewAccess().getGroup_5()); 
-            // InternalOntolizer.g:1168:2: ( rule__View__Group_5__0 )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
-
-            if ( (LA12_0==23) ) {
-                alt12=1;
-            }
-            switch (alt12) {
-                case 1 :
-                    // InternalOntolizer.g:1168:3: rule__View__Group_5__0
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__View__Group_5__0();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getViewAccess().getGroup_5()); 
+             before(grammarAccess.getViewAccess().getSemicolonKeyword_5()); 
+            match(input,12,FOLLOW_2); 
+             after(grammarAccess.getViewAccess().getSemicolonKeyword_5()); 
 
             }
 
@@ -3652,85 +3625,15 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__View__Group__5__Impl"
 
 
-    // $ANTLR start "rule__View__Group__6"
-    // InternalOntolizer.g:1176:1: rule__View__Group__6 : rule__View__Group__6__Impl ;
-    public final void rule__View__Group__6() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1180:1: ( rule__View__Group__6__Impl )
-            // InternalOntolizer.g:1181:2: rule__View__Group__6__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__View__Group__6__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group__6"
-
-
-    // $ANTLR start "rule__View__Group__6__Impl"
-    // InternalOntolizer.g:1187:1: rule__View__Group__6__Impl : ( ';' ) ;
-    public final void rule__View__Group__6__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1191:1: ( ( ';' ) )
-            // InternalOntolizer.g:1192:1: ( ';' )
-            {
-            // InternalOntolizer.g:1192:1: ( ';' )
-            // InternalOntolizer.g:1193:2: ';'
-            {
-             before(grammarAccess.getViewAccess().getSemicolonKeyword_6()); 
-            match(input,12,FOLLOW_2); 
-             after(grammarAccess.getViewAccess().getSemicolonKeyword_6()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group__6__Impl"
-
-
     // $ANTLR start "rule__View__Group_2__0"
-    // InternalOntolizer.g:1203:1: rule__View__Group_2__0 : rule__View__Group_2__0__Impl rule__View__Group_2__1 ;
+    // InternalOntolizer.g:1176:1: rule__View__Group_2__0 : rule__View__Group_2__0__Impl rule__View__Group_2__1 ;
     public final void rule__View__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1207:1: ( rule__View__Group_2__0__Impl rule__View__Group_2__1 )
-            // InternalOntolizer.g:1208:2: rule__View__Group_2__0__Impl rule__View__Group_2__1
+            // InternalOntolizer.g:1180:1: ( rule__View__Group_2__0__Impl rule__View__Group_2__1 )
+            // InternalOntolizer.g:1181:2: rule__View__Group_2__0__Impl rule__View__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__View__Group_2__0__Impl();
@@ -3761,17 +3664,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2__0__Impl"
-    // InternalOntolizer.g:1215:1: rule__View__Group_2__0__Impl : ( 'edgeTypes' ) ;
+    // InternalOntolizer.g:1188:1: rule__View__Group_2__0__Impl : ( 'edgeTypes' ) ;
     public final void rule__View__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1219:1: ( ( 'edgeTypes' ) )
-            // InternalOntolizer.g:1220:1: ( 'edgeTypes' )
+            // InternalOntolizer.g:1192:1: ( ( 'edgeTypes' ) )
+            // InternalOntolizer.g:1193:1: ( 'edgeTypes' )
             {
-            // InternalOntolizer.g:1220:1: ( 'edgeTypes' )
-            // InternalOntolizer.g:1221:2: 'edgeTypes'
+            // InternalOntolizer.g:1193:1: ( 'edgeTypes' )
+            // InternalOntolizer.g:1194:2: 'edgeTypes'
             {
              before(grammarAccess.getViewAccess().getEdgeTypesKeyword_2_0()); 
             match(input,20,FOLLOW_2); 
@@ -3798,14 +3701,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2__1"
-    // InternalOntolizer.g:1230:1: rule__View__Group_2__1 : rule__View__Group_2__1__Impl rule__View__Group_2__2 ;
+    // InternalOntolizer.g:1203:1: rule__View__Group_2__1 : rule__View__Group_2__1__Impl rule__View__Group_2__2 ;
     public final void rule__View__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1234:1: ( rule__View__Group_2__1__Impl rule__View__Group_2__2 )
-            // InternalOntolizer.g:1235:2: rule__View__Group_2__1__Impl rule__View__Group_2__2
+            // InternalOntolizer.g:1207:1: ( rule__View__Group_2__1__Impl rule__View__Group_2__2 )
+            // InternalOntolizer.g:1208:2: rule__View__Group_2__1__Impl rule__View__Group_2__2
             {
             pushFollow(FOLLOW_11);
             rule__View__Group_2__1__Impl();
@@ -3836,21 +3739,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2__1__Impl"
-    // InternalOntolizer.g:1242:1: rule__View__Group_2__1__Impl : ( ( rule__View__EdgeTypesAssignment_2_1 ) ) ;
+    // InternalOntolizer.g:1215:1: rule__View__Group_2__1__Impl : ( ( rule__View__EdgeTypesAssignment_2_1 ) ) ;
     public final void rule__View__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1246:1: ( ( ( rule__View__EdgeTypesAssignment_2_1 ) ) )
-            // InternalOntolizer.g:1247:1: ( ( rule__View__EdgeTypesAssignment_2_1 ) )
+            // InternalOntolizer.g:1219:1: ( ( ( rule__View__EdgeTypesAssignment_2_1 ) ) )
+            // InternalOntolizer.g:1220:1: ( ( rule__View__EdgeTypesAssignment_2_1 ) )
             {
-            // InternalOntolizer.g:1247:1: ( ( rule__View__EdgeTypesAssignment_2_1 ) )
-            // InternalOntolizer.g:1248:2: ( rule__View__EdgeTypesAssignment_2_1 )
+            // InternalOntolizer.g:1220:1: ( ( rule__View__EdgeTypesAssignment_2_1 ) )
+            // InternalOntolizer.g:1221:2: ( rule__View__EdgeTypesAssignment_2_1 )
             {
              before(grammarAccess.getViewAccess().getEdgeTypesAssignment_2_1()); 
-            // InternalOntolizer.g:1249:2: ( rule__View__EdgeTypesAssignment_2_1 )
-            // InternalOntolizer.g:1249:3: rule__View__EdgeTypesAssignment_2_1
+            // InternalOntolizer.g:1222:2: ( rule__View__EdgeTypesAssignment_2_1 )
+            // InternalOntolizer.g:1222:3: rule__View__EdgeTypesAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__View__EdgeTypesAssignment_2_1();
@@ -3883,14 +3786,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2__2"
-    // InternalOntolizer.g:1257:1: rule__View__Group_2__2 : rule__View__Group_2__2__Impl ;
+    // InternalOntolizer.g:1230:1: rule__View__Group_2__2 : rule__View__Group_2__2__Impl ;
     public final void rule__View__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1261:1: ( rule__View__Group_2__2__Impl )
-            // InternalOntolizer.g:1262:2: rule__View__Group_2__2__Impl
+            // InternalOntolizer.g:1234:1: ( rule__View__Group_2__2__Impl )
+            // InternalOntolizer.g:1235:2: rule__View__Group_2__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__View__Group_2__2__Impl();
@@ -3916,33 +3819,33 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2__2__Impl"
-    // InternalOntolizer.g:1268:1: rule__View__Group_2__2__Impl : ( ( rule__View__Group_2_2__0 )* ) ;
+    // InternalOntolizer.g:1241:1: rule__View__Group_2__2__Impl : ( ( rule__View__Group_2_2__0 )* ) ;
     public final void rule__View__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1272:1: ( ( ( rule__View__Group_2_2__0 )* ) )
-            // InternalOntolizer.g:1273:1: ( ( rule__View__Group_2_2__0 )* )
+            // InternalOntolizer.g:1245:1: ( ( ( rule__View__Group_2_2__0 )* ) )
+            // InternalOntolizer.g:1246:1: ( ( rule__View__Group_2_2__0 )* )
             {
-            // InternalOntolizer.g:1273:1: ( ( rule__View__Group_2_2__0 )* )
-            // InternalOntolizer.g:1274:2: ( rule__View__Group_2_2__0 )*
+            // InternalOntolizer.g:1246:1: ( ( rule__View__Group_2_2__0 )* )
+            // InternalOntolizer.g:1247:2: ( rule__View__Group_2_2__0 )*
             {
              before(grammarAccess.getViewAccess().getGroup_2_2()); 
-            // InternalOntolizer.g:1275:2: ( rule__View__Group_2_2__0 )*
-            loop13:
+            // InternalOntolizer.g:1248:2: ( rule__View__Group_2_2__0 )*
+            loop12:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA13_0==18) ) {
-                    alt13=1;
+                if ( (LA12_0==18) ) {
+                    alt12=1;
                 }
 
 
-                switch (alt13) {
+                switch (alt12) {
             	case 1 :
-            	    // InternalOntolizer.g:1275:3: rule__View__Group_2_2__0
+            	    // InternalOntolizer.g:1248:3: rule__View__Group_2_2__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__View__Group_2_2__0();
@@ -3954,7 +3857,7 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop12;
                 }
             } while (true);
 
@@ -3981,14 +3884,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2_2__0"
-    // InternalOntolizer.g:1284:1: rule__View__Group_2_2__0 : rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1 ;
+    // InternalOntolizer.g:1257:1: rule__View__Group_2_2__0 : rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1 ;
     public final void rule__View__Group_2_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1288:1: ( rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1 )
-            // InternalOntolizer.g:1289:2: rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1
+            // InternalOntolizer.g:1261:1: ( rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1 )
+            // InternalOntolizer.g:1262:2: rule__View__Group_2_2__0__Impl rule__View__Group_2_2__1
             {
             pushFollow(FOLLOW_4);
             rule__View__Group_2_2__0__Impl();
@@ -4019,17 +3922,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2_2__0__Impl"
-    // InternalOntolizer.g:1296:1: rule__View__Group_2_2__0__Impl : ( ',' ) ;
+    // InternalOntolizer.g:1269:1: rule__View__Group_2_2__0__Impl : ( ',' ) ;
     public final void rule__View__Group_2_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1300:1: ( ( ',' ) )
-            // InternalOntolizer.g:1301:1: ( ',' )
+            // InternalOntolizer.g:1273:1: ( ( ',' ) )
+            // InternalOntolizer.g:1274:1: ( ',' )
             {
-            // InternalOntolizer.g:1301:1: ( ',' )
-            // InternalOntolizer.g:1302:2: ','
+            // InternalOntolizer.g:1274:1: ( ',' )
+            // InternalOntolizer.g:1275:2: ','
             {
              before(grammarAccess.getViewAccess().getCommaKeyword_2_2_0()); 
             match(input,18,FOLLOW_2); 
@@ -4056,14 +3959,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2_2__1"
-    // InternalOntolizer.g:1311:1: rule__View__Group_2_2__1 : rule__View__Group_2_2__1__Impl ;
+    // InternalOntolizer.g:1284:1: rule__View__Group_2_2__1 : rule__View__Group_2_2__1__Impl ;
     public final void rule__View__Group_2_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1315:1: ( rule__View__Group_2_2__1__Impl )
-            // InternalOntolizer.g:1316:2: rule__View__Group_2_2__1__Impl
+            // InternalOntolizer.g:1288:1: ( rule__View__Group_2_2__1__Impl )
+            // InternalOntolizer.g:1289:2: rule__View__Group_2_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__View__Group_2_2__1__Impl();
@@ -4089,21 +3992,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_2_2__1__Impl"
-    // InternalOntolizer.g:1322:1: rule__View__Group_2_2__1__Impl : ( ( rule__View__EdgeTypesAssignment_2_2_1 ) ) ;
+    // InternalOntolizer.g:1295:1: rule__View__Group_2_2__1__Impl : ( ( rule__View__EdgeTypesAssignment_2_2_1 ) ) ;
     public final void rule__View__Group_2_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1326:1: ( ( ( rule__View__EdgeTypesAssignment_2_2_1 ) ) )
-            // InternalOntolizer.g:1327:1: ( ( rule__View__EdgeTypesAssignment_2_2_1 ) )
+            // InternalOntolizer.g:1299:1: ( ( ( rule__View__EdgeTypesAssignment_2_2_1 ) ) )
+            // InternalOntolizer.g:1300:1: ( ( rule__View__EdgeTypesAssignment_2_2_1 ) )
             {
-            // InternalOntolizer.g:1327:1: ( ( rule__View__EdgeTypesAssignment_2_2_1 ) )
-            // InternalOntolizer.g:1328:2: ( rule__View__EdgeTypesAssignment_2_2_1 )
+            // InternalOntolizer.g:1300:1: ( ( rule__View__EdgeTypesAssignment_2_2_1 ) )
+            // InternalOntolizer.g:1301:2: ( rule__View__EdgeTypesAssignment_2_2_1 )
             {
              before(grammarAccess.getViewAccess().getEdgeTypesAssignment_2_2_1()); 
-            // InternalOntolizer.g:1329:2: ( rule__View__EdgeTypesAssignment_2_2_1 )
-            // InternalOntolizer.g:1329:3: rule__View__EdgeTypesAssignment_2_2_1
+            // InternalOntolizer.g:1302:2: ( rule__View__EdgeTypesAssignment_2_2_1 )
+            // InternalOntolizer.g:1302:3: rule__View__EdgeTypesAssignment_2_2_1
             {
             pushFollow(FOLLOW_2);
             rule__View__EdgeTypesAssignment_2_2_1();
@@ -4136,14 +4039,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__0"
-    // InternalOntolizer.g:1338:1: rule__View__Group_3__0 : rule__View__Group_3__0__Impl rule__View__Group_3__1 ;
+    // InternalOntolizer.g:1311:1: rule__View__Group_3__0 : rule__View__Group_3__0__Impl rule__View__Group_3__1 ;
     public final void rule__View__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1342:1: ( rule__View__Group_3__0__Impl rule__View__Group_3__1 )
-            // InternalOntolizer.g:1343:2: rule__View__Group_3__0__Impl rule__View__Group_3__1
+            // InternalOntolizer.g:1315:1: ( rule__View__Group_3__0__Impl rule__View__Group_3__1 )
+            // InternalOntolizer.g:1316:2: rule__View__Group_3__0__Impl rule__View__Group_3__1
             {
             pushFollow(FOLLOW_4);
             rule__View__Group_3__0__Impl();
@@ -4174,17 +4077,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__0__Impl"
-    // InternalOntolizer.g:1350:1: rule__View__Group_3__0__Impl : ( 'nodeTypes' ) ;
+    // InternalOntolizer.g:1323:1: rule__View__Group_3__0__Impl : ( 'nodeTypes' ) ;
     public final void rule__View__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1354:1: ( ( 'nodeTypes' ) )
-            // InternalOntolizer.g:1355:1: ( 'nodeTypes' )
+            // InternalOntolizer.g:1327:1: ( ( 'nodeTypes' ) )
+            // InternalOntolizer.g:1328:1: ( 'nodeTypes' )
             {
-            // InternalOntolizer.g:1355:1: ( 'nodeTypes' )
-            // InternalOntolizer.g:1356:2: 'nodeTypes'
+            // InternalOntolizer.g:1328:1: ( 'nodeTypes' )
+            // InternalOntolizer.g:1329:2: 'nodeTypes'
             {
              before(grammarAccess.getViewAccess().getNodeTypesKeyword_3_0()); 
             match(input,21,FOLLOW_2); 
@@ -4211,14 +4114,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__1"
-    // InternalOntolizer.g:1365:1: rule__View__Group_3__1 : rule__View__Group_3__1__Impl rule__View__Group_3__2 ;
+    // InternalOntolizer.g:1338:1: rule__View__Group_3__1 : rule__View__Group_3__1__Impl rule__View__Group_3__2 ;
     public final void rule__View__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1369:1: ( rule__View__Group_3__1__Impl rule__View__Group_3__2 )
-            // InternalOntolizer.g:1370:2: rule__View__Group_3__1__Impl rule__View__Group_3__2
+            // InternalOntolizer.g:1342:1: ( rule__View__Group_3__1__Impl rule__View__Group_3__2 )
+            // InternalOntolizer.g:1343:2: rule__View__Group_3__1__Impl rule__View__Group_3__2
             {
             pushFollow(FOLLOW_11);
             rule__View__Group_3__1__Impl();
@@ -4249,21 +4152,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__1__Impl"
-    // InternalOntolizer.g:1377:1: rule__View__Group_3__1__Impl : ( ( rule__View__NodeTypesAssignment_3_1 ) ) ;
+    // InternalOntolizer.g:1350:1: rule__View__Group_3__1__Impl : ( ( rule__View__NodeTypesAssignment_3_1 ) ) ;
     public final void rule__View__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1381:1: ( ( ( rule__View__NodeTypesAssignment_3_1 ) ) )
-            // InternalOntolizer.g:1382:1: ( ( rule__View__NodeTypesAssignment_3_1 ) )
+            // InternalOntolizer.g:1354:1: ( ( ( rule__View__NodeTypesAssignment_3_1 ) ) )
+            // InternalOntolizer.g:1355:1: ( ( rule__View__NodeTypesAssignment_3_1 ) )
             {
-            // InternalOntolizer.g:1382:1: ( ( rule__View__NodeTypesAssignment_3_1 ) )
-            // InternalOntolizer.g:1383:2: ( rule__View__NodeTypesAssignment_3_1 )
+            // InternalOntolizer.g:1355:1: ( ( rule__View__NodeTypesAssignment_3_1 ) )
+            // InternalOntolizer.g:1356:2: ( rule__View__NodeTypesAssignment_3_1 )
             {
              before(grammarAccess.getViewAccess().getNodeTypesAssignment_3_1()); 
-            // InternalOntolizer.g:1384:2: ( rule__View__NodeTypesAssignment_3_1 )
-            // InternalOntolizer.g:1384:3: rule__View__NodeTypesAssignment_3_1
+            // InternalOntolizer.g:1357:2: ( rule__View__NodeTypesAssignment_3_1 )
+            // InternalOntolizer.g:1357:3: rule__View__NodeTypesAssignment_3_1
             {
             pushFollow(FOLLOW_2);
             rule__View__NodeTypesAssignment_3_1();
@@ -4296,14 +4199,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__2"
-    // InternalOntolizer.g:1392:1: rule__View__Group_3__2 : rule__View__Group_3__2__Impl ;
+    // InternalOntolizer.g:1365:1: rule__View__Group_3__2 : rule__View__Group_3__2__Impl ;
     public final void rule__View__Group_3__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1396:1: ( rule__View__Group_3__2__Impl )
-            // InternalOntolizer.g:1397:2: rule__View__Group_3__2__Impl
+            // InternalOntolizer.g:1369:1: ( rule__View__Group_3__2__Impl )
+            // InternalOntolizer.g:1370:2: rule__View__Group_3__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__View__Group_3__2__Impl();
@@ -4329,33 +4232,33 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3__2__Impl"
-    // InternalOntolizer.g:1403:1: rule__View__Group_3__2__Impl : ( ( rule__View__Group_3_2__0 )* ) ;
+    // InternalOntolizer.g:1376:1: rule__View__Group_3__2__Impl : ( ( rule__View__Group_3_2__0 )* ) ;
     public final void rule__View__Group_3__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1407:1: ( ( ( rule__View__Group_3_2__0 )* ) )
-            // InternalOntolizer.g:1408:1: ( ( rule__View__Group_3_2__0 )* )
+            // InternalOntolizer.g:1380:1: ( ( ( rule__View__Group_3_2__0 )* ) )
+            // InternalOntolizer.g:1381:1: ( ( rule__View__Group_3_2__0 )* )
             {
-            // InternalOntolizer.g:1408:1: ( ( rule__View__Group_3_2__0 )* )
-            // InternalOntolizer.g:1409:2: ( rule__View__Group_3_2__0 )*
+            // InternalOntolizer.g:1381:1: ( ( rule__View__Group_3_2__0 )* )
+            // InternalOntolizer.g:1382:2: ( rule__View__Group_3_2__0 )*
             {
              before(grammarAccess.getViewAccess().getGroup_3_2()); 
-            // InternalOntolizer.g:1410:2: ( rule__View__Group_3_2__0 )*
-            loop14:
+            // InternalOntolizer.g:1383:2: ( rule__View__Group_3_2__0 )*
+            loop13:
             do {
-                int alt14=2;
-                int LA14_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA14_0==18) ) {
-                    alt14=1;
+                if ( (LA13_0==18) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt14) {
+                switch (alt13) {
             	case 1 :
-            	    // InternalOntolizer.g:1410:3: rule__View__Group_3_2__0
+            	    // InternalOntolizer.g:1383:3: rule__View__Group_3_2__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__View__Group_3_2__0();
@@ -4367,7 +4270,7 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
             	    break;
 
             	default :
-            	    break loop14;
+            	    break loop13;
                 }
             } while (true);
 
@@ -4394,14 +4297,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3_2__0"
-    // InternalOntolizer.g:1419:1: rule__View__Group_3_2__0 : rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1 ;
+    // InternalOntolizer.g:1392:1: rule__View__Group_3_2__0 : rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1 ;
     public final void rule__View__Group_3_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1423:1: ( rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1 )
-            // InternalOntolizer.g:1424:2: rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1
+            // InternalOntolizer.g:1396:1: ( rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1 )
+            // InternalOntolizer.g:1397:2: rule__View__Group_3_2__0__Impl rule__View__Group_3_2__1
             {
             pushFollow(FOLLOW_4);
             rule__View__Group_3_2__0__Impl();
@@ -4432,17 +4335,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3_2__0__Impl"
-    // InternalOntolizer.g:1431:1: rule__View__Group_3_2__0__Impl : ( ',' ) ;
+    // InternalOntolizer.g:1404:1: rule__View__Group_3_2__0__Impl : ( ',' ) ;
     public final void rule__View__Group_3_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1435:1: ( ( ',' ) )
-            // InternalOntolizer.g:1436:1: ( ',' )
+            // InternalOntolizer.g:1408:1: ( ( ',' ) )
+            // InternalOntolizer.g:1409:1: ( ',' )
             {
-            // InternalOntolizer.g:1436:1: ( ',' )
-            // InternalOntolizer.g:1437:2: ','
+            // InternalOntolizer.g:1409:1: ( ',' )
+            // InternalOntolizer.g:1410:2: ','
             {
              before(grammarAccess.getViewAccess().getCommaKeyword_3_2_0()); 
             match(input,18,FOLLOW_2); 
@@ -4469,14 +4372,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3_2__1"
-    // InternalOntolizer.g:1446:1: rule__View__Group_3_2__1 : rule__View__Group_3_2__1__Impl ;
+    // InternalOntolizer.g:1419:1: rule__View__Group_3_2__1 : rule__View__Group_3_2__1__Impl ;
     public final void rule__View__Group_3_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1450:1: ( rule__View__Group_3_2__1__Impl )
-            // InternalOntolizer.g:1451:2: rule__View__Group_3_2__1__Impl
+            // InternalOntolizer.g:1423:1: ( rule__View__Group_3_2__1__Impl )
+            // InternalOntolizer.g:1424:2: rule__View__Group_3_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__View__Group_3_2__1__Impl();
@@ -4502,21 +4405,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_3_2__1__Impl"
-    // InternalOntolizer.g:1457:1: rule__View__Group_3_2__1__Impl : ( ( rule__View__NodeTypesAssignment_3_2_1 ) ) ;
+    // InternalOntolizer.g:1430:1: rule__View__Group_3_2__1__Impl : ( ( rule__View__NodeTypesAssignment_3_2_1 ) ) ;
     public final void rule__View__Group_3_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1461:1: ( ( ( rule__View__NodeTypesAssignment_3_2_1 ) ) )
-            // InternalOntolizer.g:1462:1: ( ( rule__View__NodeTypesAssignment_3_2_1 ) )
+            // InternalOntolizer.g:1434:1: ( ( ( rule__View__NodeTypesAssignment_3_2_1 ) ) )
+            // InternalOntolizer.g:1435:1: ( ( rule__View__NodeTypesAssignment_3_2_1 ) )
             {
-            // InternalOntolizer.g:1462:1: ( ( rule__View__NodeTypesAssignment_3_2_1 ) )
-            // InternalOntolizer.g:1463:2: ( rule__View__NodeTypesAssignment_3_2_1 )
+            // InternalOntolizer.g:1435:1: ( ( rule__View__NodeTypesAssignment_3_2_1 ) )
+            // InternalOntolizer.g:1436:2: ( rule__View__NodeTypesAssignment_3_2_1 )
             {
              before(grammarAccess.getViewAccess().getNodeTypesAssignment_3_2_1()); 
-            // InternalOntolizer.g:1464:2: ( rule__View__NodeTypesAssignment_3_2_1 )
-            // InternalOntolizer.g:1464:3: rule__View__NodeTypesAssignment_3_2_1
+            // InternalOntolizer.g:1437:2: ( rule__View__NodeTypesAssignment_3_2_1 )
+            // InternalOntolizer.g:1437:3: rule__View__NodeTypesAssignment_3_2_1
             {
             pushFollow(FOLLOW_2);
             rule__View__NodeTypesAssignment_3_2_1();
@@ -4549,16 +4452,16 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_4__0"
-    // InternalOntolizer.g:1473:1: rule__View__Group_4__0 : rule__View__Group_4__0__Impl rule__View__Group_4__1 ;
+    // InternalOntolizer.g:1446:1: rule__View__Group_4__0 : rule__View__Group_4__0__Impl rule__View__Group_4__1 ;
     public final void rule__View__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1477:1: ( rule__View__Group_4__0__Impl rule__View__Group_4__1 )
-            // InternalOntolizer.g:1478:2: rule__View__Group_4__0__Impl rule__View__Group_4__1
+            // InternalOntolizer.g:1450:1: ( rule__View__Group_4__0__Impl rule__View__Group_4__1 )
+            // InternalOntolizer.g:1451:2: rule__View__Group_4__0__Impl rule__View__Group_4__1
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_14);
             rule__View__Group_4__0__Impl();
 
             state._fsp--;
@@ -4587,21 +4490,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_4__0__Impl"
-    // InternalOntolizer.g:1485:1: rule__View__Group_4__0__Impl : ( 'node' ) ;
+    // InternalOntolizer.g:1458:1: rule__View__Group_4__0__Impl : ( 'depth' ) ;
     public final void rule__View__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1489:1: ( ( 'node' ) )
-            // InternalOntolizer.g:1490:1: ( 'node' )
+            // InternalOntolizer.g:1462:1: ( ( 'depth' ) )
+            // InternalOntolizer.g:1463:1: ( 'depth' )
             {
-            // InternalOntolizer.g:1490:1: ( 'node' )
-            // InternalOntolizer.g:1491:2: 'node'
+            // InternalOntolizer.g:1463:1: ( 'depth' )
+            // InternalOntolizer.g:1464:2: 'depth'
             {
-             before(grammarAccess.getViewAccess().getNodeKeyword_4_0()); 
+             before(grammarAccess.getViewAccess().getDepthKeyword_4_0()); 
             match(input,22,FOLLOW_2); 
-             after(grammarAccess.getViewAccess().getNodeKeyword_4_0()); 
+             after(grammarAccess.getViewAccess().getDepthKeyword_4_0()); 
 
             }
 
@@ -4624,14 +4527,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_4__1"
-    // InternalOntolizer.g:1500:1: rule__View__Group_4__1 : rule__View__Group_4__1__Impl ;
+    // InternalOntolizer.g:1473:1: rule__View__Group_4__1 : rule__View__Group_4__1__Impl ;
     public final void rule__View__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1504:1: ( rule__View__Group_4__1__Impl )
-            // InternalOntolizer.g:1505:2: rule__View__Group_4__1__Impl
+            // InternalOntolizer.g:1477:1: ( rule__View__Group_4__1__Impl )
+            // InternalOntolizer.g:1478:2: rule__View__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__View__Group_4__1__Impl();
@@ -4657,31 +4560,31 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__Group_4__1__Impl"
-    // InternalOntolizer.g:1511:1: rule__View__Group_4__1__Impl : ( ( rule__View__NodeAssignment_4_1 ) ) ;
+    // InternalOntolizer.g:1484:1: rule__View__Group_4__1__Impl : ( ( rule__View__DepthAssignment_4_1 ) ) ;
     public final void rule__View__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1515:1: ( ( ( rule__View__NodeAssignment_4_1 ) ) )
-            // InternalOntolizer.g:1516:1: ( ( rule__View__NodeAssignment_4_1 ) )
+            // InternalOntolizer.g:1488:1: ( ( ( rule__View__DepthAssignment_4_1 ) ) )
+            // InternalOntolizer.g:1489:1: ( ( rule__View__DepthAssignment_4_1 ) )
             {
-            // InternalOntolizer.g:1516:1: ( ( rule__View__NodeAssignment_4_1 ) )
-            // InternalOntolizer.g:1517:2: ( rule__View__NodeAssignment_4_1 )
+            // InternalOntolizer.g:1489:1: ( ( rule__View__DepthAssignment_4_1 ) )
+            // InternalOntolizer.g:1490:2: ( rule__View__DepthAssignment_4_1 )
             {
-             before(grammarAccess.getViewAccess().getNodeAssignment_4_1()); 
-            // InternalOntolizer.g:1518:2: ( rule__View__NodeAssignment_4_1 )
-            // InternalOntolizer.g:1518:3: rule__View__NodeAssignment_4_1
+             before(grammarAccess.getViewAccess().getDepthAssignment_4_1()); 
+            // InternalOntolizer.g:1491:2: ( rule__View__DepthAssignment_4_1 )
+            // InternalOntolizer.g:1491:3: rule__View__DepthAssignment_4_1
             {
             pushFollow(FOLLOW_2);
-            rule__View__NodeAssignment_4_1();
+            rule__View__DepthAssignment_4_1();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getViewAccess().getNodeAssignment_4_1()); 
+             after(grammarAccess.getViewAccess().getDepthAssignment_4_1()); 
 
             }
 
@@ -4703,170 +4606,15 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__View__Group_4__1__Impl"
 
 
-    // $ANTLR start "rule__View__Group_5__0"
-    // InternalOntolizer.g:1527:1: rule__View__Group_5__0 : rule__View__Group_5__0__Impl rule__View__Group_5__1 ;
-    public final void rule__View__Group_5__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1531:1: ( rule__View__Group_5__0__Impl rule__View__Group_5__1 )
-            // InternalOntolizer.g:1532:2: rule__View__Group_5__0__Impl rule__View__Group_5__1
-            {
-            pushFollow(FOLLOW_14);
-            rule__View__Group_5__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_2);
-            rule__View__Group_5__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group_5__0"
-
-
-    // $ANTLR start "rule__View__Group_5__0__Impl"
-    // InternalOntolizer.g:1539:1: rule__View__Group_5__0__Impl : ( 'depth' ) ;
-    public final void rule__View__Group_5__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1543:1: ( ( 'depth' ) )
-            // InternalOntolizer.g:1544:1: ( 'depth' )
-            {
-            // InternalOntolizer.g:1544:1: ( 'depth' )
-            // InternalOntolizer.g:1545:2: 'depth'
-            {
-             before(grammarAccess.getViewAccess().getDepthKeyword_5_0()); 
-            match(input,23,FOLLOW_2); 
-             after(grammarAccess.getViewAccess().getDepthKeyword_5_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group_5__0__Impl"
-
-
-    // $ANTLR start "rule__View__Group_5__1"
-    // InternalOntolizer.g:1554:1: rule__View__Group_5__1 : rule__View__Group_5__1__Impl ;
-    public final void rule__View__Group_5__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1558:1: ( rule__View__Group_5__1__Impl )
-            // InternalOntolizer.g:1559:2: rule__View__Group_5__1__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__View__Group_5__1__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group_5__1"
-
-
-    // $ANTLR start "rule__View__Group_5__1__Impl"
-    // InternalOntolizer.g:1565:1: rule__View__Group_5__1__Impl : ( ( rule__View__DepthAssignment_5_1 ) ) ;
-    public final void rule__View__Group_5__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:1569:1: ( ( ( rule__View__DepthAssignment_5_1 ) ) )
-            // InternalOntolizer.g:1570:1: ( ( rule__View__DepthAssignment_5_1 ) )
-            {
-            // InternalOntolizer.g:1570:1: ( ( rule__View__DepthAssignment_5_1 ) )
-            // InternalOntolizer.g:1571:2: ( rule__View__DepthAssignment_5_1 )
-            {
-             before(grammarAccess.getViewAccess().getDepthAssignment_5_1()); 
-            // InternalOntolizer.g:1572:2: ( rule__View__DepthAssignment_5_1 )
-            // InternalOntolizer.g:1572:3: rule__View__DepthAssignment_5_1
-            {
-            pushFollow(FOLLOW_2);
-            rule__View__DepthAssignment_5_1();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getViewAccess().getDepthAssignment_5_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__Group_5__1__Impl"
-
-
     // $ANTLR start "rule__DepthRange__Group__0"
-    // InternalOntolizer.g:1581:1: rule__DepthRange__Group__0 : rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1 ;
+    // InternalOntolizer.g:1500:1: rule__DepthRange__Group__0 : rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1 ;
     public final void rule__DepthRange__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1585:1: ( rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1 )
-            // InternalOntolizer.g:1586:2: rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1
+            // InternalOntolizer.g:1504:1: ( rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1 )
+            // InternalOntolizer.g:1505:2: rule__DepthRange__Group__0__Impl rule__DepthRange__Group__1
             {
             pushFollow(FOLLOW_15);
             rule__DepthRange__Group__0__Impl();
@@ -4897,21 +4645,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group__0__Impl"
-    // InternalOntolizer.g:1593:1: rule__DepthRange__Group__0__Impl : ( ( rule__DepthRange__StartAssignment_0 ) ) ;
+    // InternalOntolizer.g:1512:1: rule__DepthRange__Group__0__Impl : ( ( rule__DepthRange__StartAssignment_0 ) ) ;
     public final void rule__DepthRange__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1597:1: ( ( ( rule__DepthRange__StartAssignment_0 ) ) )
-            // InternalOntolizer.g:1598:1: ( ( rule__DepthRange__StartAssignment_0 ) )
+            // InternalOntolizer.g:1516:1: ( ( ( rule__DepthRange__StartAssignment_0 ) ) )
+            // InternalOntolizer.g:1517:1: ( ( rule__DepthRange__StartAssignment_0 ) )
             {
-            // InternalOntolizer.g:1598:1: ( ( rule__DepthRange__StartAssignment_0 ) )
-            // InternalOntolizer.g:1599:2: ( rule__DepthRange__StartAssignment_0 )
+            // InternalOntolizer.g:1517:1: ( ( rule__DepthRange__StartAssignment_0 ) )
+            // InternalOntolizer.g:1518:2: ( rule__DepthRange__StartAssignment_0 )
             {
              before(grammarAccess.getDepthRangeAccess().getStartAssignment_0()); 
-            // InternalOntolizer.g:1600:2: ( rule__DepthRange__StartAssignment_0 )
-            // InternalOntolizer.g:1600:3: rule__DepthRange__StartAssignment_0
+            // InternalOntolizer.g:1519:2: ( rule__DepthRange__StartAssignment_0 )
+            // InternalOntolizer.g:1519:3: rule__DepthRange__StartAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__DepthRange__StartAssignment_0();
@@ -4944,14 +4692,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group__1"
-    // InternalOntolizer.g:1608:1: rule__DepthRange__Group__1 : rule__DepthRange__Group__1__Impl ;
+    // InternalOntolizer.g:1527:1: rule__DepthRange__Group__1 : rule__DepthRange__Group__1__Impl ;
     public final void rule__DepthRange__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1612:1: ( rule__DepthRange__Group__1__Impl )
-            // InternalOntolizer.g:1613:2: rule__DepthRange__Group__1__Impl
+            // InternalOntolizer.g:1531:1: ( rule__DepthRange__Group__1__Impl )
+            // InternalOntolizer.g:1532:2: rule__DepthRange__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__DepthRange__Group__1__Impl();
@@ -4977,29 +4725,29 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group__1__Impl"
-    // InternalOntolizer.g:1619:1: rule__DepthRange__Group__1__Impl : ( ( rule__DepthRange__Group_1__0 )? ) ;
+    // InternalOntolizer.g:1538:1: rule__DepthRange__Group__1__Impl : ( ( rule__DepthRange__Group_1__0 )? ) ;
     public final void rule__DepthRange__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1623:1: ( ( ( rule__DepthRange__Group_1__0 )? ) )
-            // InternalOntolizer.g:1624:1: ( ( rule__DepthRange__Group_1__0 )? )
+            // InternalOntolizer.g:1542:1: ( ( ( rule__DepthRange__Group_1__0 )? ) )
+            // InternalOntolizer.g:1543:1: ( ( rule__DepthRange__Group_1__0 )? )
             {
-            // InternalOntolizer.g:1624:1: ( ( rule__DepthRange__Group_1__0 )? )
-            // InternalOntolizer.g:1625:2: ( rule__DepthRange__Group_1__0 )?
+            // InternalOntolizer.g:1543:1: ( ( rule__DepthRange__Group_1__0 )? )
+            // InternalOntolizer.g:1544:2: ( rule__DepthRange__Group_1__0 )?
             {
              before(grammarAccess.getDepthRangeAccess().getGroup_1()); 
-            // InternalOntolizer.g:1626:2: ( rule__DepthRange__Group_1__0 )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalOntolizer.g:1545:2: ( rule__DepthRange__Group_1__0 )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA15_0==24) ) {
-                alt15=1;
+            if ( (LA14_0==23) ) {
+                alt14=1;
             }
-            switch (alt15) {
+            switch (alt14) {
                 case 1 :
-                    // InternalOntolizer.g:1626:3: rule__DepthRange__Group_1__0
+                    // InternalOntolizer.g:1545:3: rule__DepthRange__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__DepthRange__Group_1__0();
@@ -5035,14 +4783,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group_1__0"
-    // InternalOntolizer.g:1635:1: rule__DepthRange__Group_1__0 : rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1 ;
+    // InternalOntolizer.g:1554:1: rule__DepthRange__Group_1__0 : rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1 ;
     public final void rule__DepthRange__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1639:1: ( rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1 )
-            // InternalOntolizer.g:1640:2: rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1
+            // InternalOntolizer.g:1558:1: ( rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1 )
+            // InternalOntolizer.g:1559:2: rule__DepthRange__Group_1__0__Impl rule__DepthRange__Group_1__1
             {
             pushFollow(FOLLOW_14);
             rule__DepthRange__Group_1__0__Impl();
@@ -5073,20 +4821,20 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group_1__0__Impl"
-    // InternalOntolizer.g:1647:1: rule__DepthRange__Group_1__0__Impl : ( '..' ) ;
+    // InternalOntolizer.g:1566:1: rule__DepthRange__Group_1__0__Impl : ( '..' ) ;
     public final void rule__DepthRange__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1651:1: ( ( '..' ) )
-            // InternalOntolizer.g:1652:1: ( '..' )
+            // InternalOntolizer.g:1570:1: ( ( '..' ) )
+            // InternalOntolizer.g:1571:1: ( '..' )
             {
-            // InternalOntolizer.g:1652:1: ( '..' )
-            // InternalOntolizer.g:1653:2: '..'
+            // InternalOntolizer.g:1571:1: ( '..' )
+            // InternalOntolizer.g:1572:2: '..'
             {
              before(grammarAccess.getDepthRangeAccess().getFullStopFullStopKeyword_1_0()); 
-            match(input,24,FOLLOW_2); 
+            match(input,23,FOLLOW_2); 
              after(grammarAccess.getDepthRangeAccess().getFullStopFullStopKeyword_1_0()); 
 
             }
@@ -5110,14 +4858,14 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group_1__1"
-    // InternalOntolizer.g:1662:1: rule__DepthRange__Group_1__1 : rule__DepthRange__Group_1__1__Impl ;
+    // InternalOntolizer.g:1581:1: rule__DepthRange__Group_1__1 : rule__DepthRange__Group_1__1__Impl ;
     public final void rule__DepthRange__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1666:1: ( rule__DepthRange__Group_1__1__Impl )
-            // InternalOntolizer.g:1667:2: rule__DepthRange__Group_1__1__Impl
+            // InternalOntolizer.g:1585:1: ( rule__DepthRange__Group_1__1__Impl )
+            // InternalOntolizer.g:1586:2: rule__DepthRange__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__DepthRange__Group_1__1__Impl();
@@ -5143,21 +4891,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__Group_1__1__Impl"
-    // InternalOntolizer.g:1673:1: rule__DepthRange__Group_1__1__Impl : ( ( rule__DepthRange__EndAssignment_1_1 ) ) ;
+    // InternalOntolizer.g:1592:1: rule__DepthRange__Group_1__1__Impl : ( ( rule__DepthRange__EndAssignment_1_1 ) ) ;
     public final void rule__DepthRange__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1677:1: ( ( ( rule__DepthRange__EndAssignment_1_1 ) ) )
-            // InternalOntolizer.g:1678:1: ( ( rule__DepthRange__EndAssignment_1_1 ) )
+            // InternalOntolizer.g:1596:1: ( ( ( rule__DepthRange__EndAssignment_1_1 ) ) )
+            // InternalOntolizer.g:1597:1: ( ( rule__DepthRange__EndAssignment_1_1 ) )
             {
-            // InternalOntolizer.g:1678:1: ( ( rule__DepthRange__EndAssignment_1_1 ) )
-            // InternalOntolizer.g:1679:2: ( rule__DepthRange__EndAssignment_1_1 )
+            // InternalOntolizer.g:1597:1: ( ( rule__DepthRange__EndAssignment_1_1 ) )
+            // InternalOntolizer.g:1598:2: ( rule__DepthRange__EndAssignment_1_1 )
             {
              before(grammarAccess.getDepthRangeAccess().getEndAssignment_1_1()); 
-            // InternalOntolizer.g:1680:2: ( rule__DepthRange__EndAssignment_1_1 )
-            // InternalOntolizer.g:1680:3: rule__DepthRange__EndAssignment_1_1
+            // InternalOntolizer.g:1599:2: ( rule__DepthRange__EndAssignment_1_1 )
+            // InternalOntolizer.g:1599:3: rule__DepthRange__EndAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__DepthRange__EndAssignment_1_1();
@@ -5190,17 +4938,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Model__NodeTypesAssignment_0"
-    // InternalOntolizer.g:1689:1: rule__Model__NodeTypesAssignment_0 : ( ruleNodeType ) ;
+    // InternalOntolizer.g:1608:1: rule__Model__NodeTypesAssignment_0 : ( ruleNodeType ) ;
     public final void rule__Model__NodeTypesAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1693:1: ( ( ruleNodeType ) )
-            // InternalOntolizer.g:1694:2: ( ruleNodeType )
+            // InternalOntolizer.g:1612:1: ( ( ruleNodeType ) )
+            // InternalOntolizer.g:1613:2: ( ruleNodeType )
             {
-            // InternalOntolizer.g:1694:2: ( ruleNodeType )
-            // InternalOntolizer.g:1695:3: ruleNodeType
+            // InternalOntolizer.g:1613:2: ( ruleNodeType )
+            // InternalOntolizer.g:1614:3: ruleNodeType
             {
              before(grammarAccess.getModelAccess().getNodeTypesNodeTypeParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -5231,17 +4979,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Model__EdgeTypesAssignment_1"
-    // InternalOntolizer.g:1704:1: rule__Model__EdgeTypesAssignment_1 : ( ruleEdgeType ) ;
+    // InternalOntolizer.g:1623:1: rule__Model__EdgeTypesAssignment_1 : ( ruleEdgeType ) ;
     public final void rule__Model__EdgeTypesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1708:1: ( ( ruleEdgeType ) )
-            // InternalOntolizer.g:1709:2: ( ruleEdgeType )
+            // InternalOntolizer.g:1627:1: ( ( ruleEdgeType ) )
+            // InternalOntolizer.g:1628:2: ( ruleEdgeType )
             {
-            // InternalOntolizer.g:1709:2: ( ruleEdgeType )
-            // InternalOntolizer.g:1710:3: ruleEdgeType
+            // InternalOntolizer.g:1628:2: ( ruleEdgeType )
+            // InternalOntolizer.g:1629:3: ruleEdgeType
             {
              before(grammarAccess.getModelAccess().getEdgeTypesEdgeTypeParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -5272,17 +5020,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Model__NodesAssignment_2"
-    // InternalOntolizer.g:1719:1: rule__Model__NodesAssignment_2 : ( ruleNode ) ;
+    // InternalOntolizer.g:1638:1: rule__Model__NodesAssignment_2 : ( ruleNode ) ;
     public final void rule__Model__NodesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1723:1: ( ( ruleNode ) )
-            // InternalOntolizer.g:1724:2: ( ruleNode )
+            // InternalOntolizer.g:1642:1: ( ( ruleNode ) )
+            // InternalOntolizer.g:1643:2: ( ruleNode )
             {
-            // InternalOntolizer.g:1724:2: ( ruleNode )
-            // InternalOntolizer.g:1725:3: ruleNode
+            // InternalOntolizer.g:1643:2: ( ruleNode )
+            // InternalOntolizer.g:1644:3: ruleNode
             {
              before(grammarAccess.getModelAccess().getNodesNodeParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -5313,17 +5061,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Model__ViewsAssignment_3"
-    // InternalOntolizer.g:1734:1: rule__Model__ViewsAssignment_3 : ( ruleView ) ;
+    // InternalOntolizer.g:1653:1: rule__Model__ViewsAssignment_3 : ( ruleView ) ;
     public final void rule__Model__ViewsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1738:1: ( ( ruleView ) )
-            // InternalOntolizer.g:1739:2: ( ruleView )
+            // InternalOntolizer.g:1657:1: ( ( ruleView ) )
+            // InternalOntolizer.g:1658:2: ( ruleView )
             {
-            // InternalOntolizer.g:1739:2: ( ruleView )
-            // InternalOntolizer.g:1740:3: ruleView
+            // InternalOntolizer.g:1658:2: ( ruleView )
+            // InternalOntolizer.g:1659:3: ruleView
             {
              before(grammarAccess.getModelAccess().getViewsViewParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -5354,17 +5102,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__NodeType__NameAssignment_1"
-    // InternalOntolizer.g:1749:1: rule__NodeType__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalOntolizer.g:1668:1: rule__NodeType__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__NodeType__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1753:1: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1754:2: ( RULE_ID )
+            // InternalOntolizer.g:1672:1: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1673:2: ( RULE_ID )
             {
-            // InternalOntolizer.g:1754:2: ( RULE_ID )
-            // InternalOntolizer.g:1755:3: RULE_ID
+            // InternalOntolizer.g:1673:2: ( RULE_ID )
+            // InternalOntolizer.g:1674:3: RULE_ID
             {
              before(grammarAccess.getNodeTypeAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5391,17 +5139,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__NodeType__ShapeAssignment_2_1"
-    // InternalOntolizer.g:1764:1: rule__NodeType__ShapeAssignment_2_1 : ( RULE_STRING ) ;
+    // InternalOntolizer.g:1683:1: rule__NodeType__ShapeAssignment_2_1 : ( RULE_STRING ) ;
     public final void rule__NodeType__ShapeAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1768:1: ( ( RULE_STRING ) )
-            // InternalOntolizer.g:1769:2: ( RULE_STRING )
+            // InternalOntolizer.g:1687:1: ( ( RULE_STRING ) )
+            // InternalOntolizer.g:1688:2: ( RULE_STRING )
             {
-            // InternalOntolizer.g:1769:2: ( RULE_STRING )
-            // InternalOntolizer.g:1770:3: RULE_STRING
+            // InternalOntolizer.g:1688:2: ( RULE_STRING )
+            // InternalOntolizer.g:1689:3: RULE_STRING
             {
              before(grammarAccess.getNodeTypeAccess().getShapeSTRINGTerminalRuleCall_2_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5428,17 +5176,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__NodeType__ColorAssignment_3_1"
-    // InternalOntolizer.g:1779:1: rule__NodeType__ColorAssignment_3_1 : ( RULE_STRING ) ;
+    // InternalOntolizer.g:1698:1: rule__NodeType__ColorAssignment_3_1 : ( RULE_STRING ) ;
     public final void rule__NodeType__ColorAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1783:1: ( ( RULE_STRING ) )
-            // InternalOntolizer.g:1784:2: ( RULE_STRING )
+            // InternalOntolizer.g:1702:1: ( ( RULE_STRING ) )
+            // InternalOntolizer.g:1703:2: ( RULE_STRING )
             {
-            // InternalOntolizer.g:1784:2: ( RULE_STRING )
-            // InternalOntolizer.g:1785:3: RULE_STRING
+            // InternalOntolizer.g:1703:2: ( RULE_STRING )
+            // InternalOntolizer.g:1704:3: RULE_STRING
             {
              before(grammarAccess.getNodeTypeAccess().getColorSTRINGTerminalRuleCall_3_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5465,17 +5213,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__NodeType__StyleAssignment_4_1"
-    // InternalOntolizer.g:1794:1: rule__NodeType__StyleAssignment_4_1 : ( RULE_STRING ) ;
+    // InternalOntolizer.g:1713:1: rule__NodeType__StyleAssignment_4_1 : ( RULE_STRING ) ;
     public final void rule__NodeType__StyleAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1798:1: ( ( RULE_STRING ) )
-            // InternalOntolizer.g:1799:2: ( RULE_STRING )
+            // InternalOntolizer.g:1717:1: ( ( RULE_STRING ) )
+            // InternalOntolizer.g:1718:2: ( RULE_STRING )
             {
-            // InternalOntolizer.g:1799:2: ( RULE_STRING )
-            // InternalOntolizer.g:1800:3: RULE_STRING
+            // InternalOntolizer.g:1718:2: ( RULE_STRING )
+            // InternalOntolizer.g:1719:3: RULE_STRING
             {
              before(grammarAccess.getNodeTypeAccess().getStyleSTRINGTerminalRuleCall_4_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5502,17 +5250,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__EdgeType__NameAssignment_1"
-    // InternalOntolizer.g:1809:1: rule__EdgeType__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalOntolizer.g:1728:1: rule__EdgeType__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__EdgeType__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1813:1: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1814:2: ( RULE_ID )
+            // InternalOntolizer.g:1732:1: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1733:2: ( RULE_ID )
             {
-            // InternalOntolizer.g:1814:2: ( RULE_ID )
-            // InternalOntolizer.g:1815:3: RULE_ID
+            // InternalOntolizer.g:1733:2: ( RULE_ID )
+            // InternalOntolizer.g:1734:3: RULE_ID
             {
              before(grammarAccess.getEdgeTypeAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5539,21 +5287,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Node__NodeTypeAssignment_0"
-    // InternalOntolizer.g:1824:1: rule__Node__NodeTypeAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1743:1: rule__Node__NodeTypeAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__Node__NodeTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1828:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:1829:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1747:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1748:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:1829:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1830:3: ( RULE_ID )
+            // InternalOntolizer.g:1748:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1749:3: ( RULE_ID )
             {
              before(grammarAccess.getNodeAccess().getNodeTypeNodeTypeCrossReference_0_0()); 
-            // InternalOntolizer.g:1831:3: ( RULE_ID )
-            // InternalOntolizer.g:1832:4: RULE_ID
+            // InternalOntolizer.g:1750:3: ( RULE_ID )
+            // InternalOntolizer.g:1751:4: RULE_ID
             {
              before(grammarAccess.getNodeAccess().getNodeTypeNodeTypeIDTerminalRuleCall_0_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5584,17 +5332,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Node__NameAssignment_1"
-    // InternalOntolizer.g:1843:1: rule__Node__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalOntolizer.g:1762:1: rule__Node__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Node__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1847:1: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1848:2: ( RULE_ID )
+            // InternalOntolizer.g:1766:1: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1767:2: ( RULE_ID )
             {
-            // InternalOntolizer.g:1848:2: ( RULE_ID )
-            // InternalOntolizer.g:1849:3: RULE_ID
+            // InternalOntolizer.g:1767:2: ( RULE_ID )
+            // InternalOntolizer.g:1768:3: RULE_ID
             {
              before(grammarAccess.getNodeAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5621,17 +5369,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Node__SummaryAssignment_2_1"
-    // InternalOntolizer.g:1858:1: rule__Node__SummaryAssignment_2_1 : ( RULE_STRING ) ;
+    // InternalOntolizer.g:1777:1: rule__Node__SummaryAssignment_2_1 : ( RULE_STRING ) ;
     public final void rule__Node__SummaryAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1862:1: ( ( RULE_STRING ) )
-            // InternalOntolizer.g:1863:2: ( RULE_STRING )
+            // InternalOntolizer.g:1781:1: ( ( RULE_STRING ) )
+            // InternalOntolizer.g:1782:2: ( RULE_STRING )
             {
-            // InternalOntolizer.g:1863:2: ( RULE_STRING )
-            // InternalOntolizer.g:1864:3: RULE_STRING
+            // InternalOntolizer.g:1782:2: ( RULE_STRING )
+            // InternalOntolizer.g:1783:3: RULE_STRING
             {
              before(grammarAccess.getNodeAccess().getSummarySTRINGTerminalRuleCall_2_1_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -5658,17 +5406,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Node__EdgeListsAssignment_3"
-    // InternalOntolizer.g:1873:1: rule__Node__EdgeListsAssignment_3 : ( ruleEdgeList ) ;
+    // InternalOntolizer.g:1792:1: rule__Node__EdgeListsAssignment_3 : ( ruleEdgeList ) ;
     public final void rule__Node__EdgeListsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1877:1: ( ( ruleEdgeList ) )
-            // InternalOntolizer.g:1878:2: ( ruleEdgeList )
+            // InternalOntolizer.g:1796:1: ( ( ruleEdgeList ) )
+            // InternalOntolizer.g:1797:2: ( ruleEdgeList )
             {
-            // InternalOntolizer.g:1878:2: ( ruleEdgeList )
-            // InternalOntolizer.g:1879:3: ruleEdgeList
+            // InternalOntolizer.g:1797:2: ( ruleEdgeList )
+            // InternalOntolizer.g:1798:3: ruleEdgeList
             {
              before(grammarAccess.getNodeAccess().getEdgeListsEdgeListParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -5699,21 +5447,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__EdgeList__EdgeTypeAssignment_0"
-    // InternalOntolizer.g:1888:1: rule__EdgeList__EdgeTypeAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1807:1: rule__EdgeList__EdgeTypeAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__EdgeList__EdgeTypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1892:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:1893:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1811:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1812:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:1893:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1894:3: ( RULE_ID )
+            // InternalOntolizer.g:1812:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1813:3: ( RULE_ID )
             {
              before(grammarAccess.getEdgeListAccess().getEdgeTypeEdgeTypeCrossReference_0_0()); 
-            // InternalOntolizer.g:1895:3: ( RULE_ID )
-            // InternalOntolizer.g:1896:4: RULE_ID
+            // InternalOntolizer.g:1814:3: ( RULE_ID )
+            // InternalOntolizer.g:1815:4: RULE_ID
             {
              before(grammarAccess.getEdgeListAccess().getEdgeTypeEdgeTypeIDTerminalRuleCall_0_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5744,17 +5492,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__EdgeList__EdgesAssignment_1"
-    // InternalOntolizer.g:1907:1: rule__EdgeList__EdgesAssignment_1 : ( ruleEdge ) ;
+    // InternalOntolizer.g:1826:1: rule__EdgeList__EdgesAssignment_1 : ( ruleEdge ) ;
     public final void rule__EdgeList__EdgesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1911:1: ( ( ruleEdge ) )
-            // InternalOntolizer.g:1912:2: ( ruleEdge )
+            // InternalOntolizer.g:1830:1: ( ( ruleEdge ) )
+            // InternalOntolizer.g:1831:2: ( ruleEdge )
             {
-            // InternalOntolizer.g:1912:2: ( ruleEdge )
-            // InternalOntolizer.g:1913:3: ruleEdge
+            // InternalOntolizer.g:1831:2: ( ruleEdge )
+            // InternalOntolizer.g:1832:3: ruleEdge
             {
              before(grammarAccess.getEdgeListAccess().getEdgesEdgeParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -5785,17 +5533,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__EdgeList__EdgesAssignment_2_1"
-    // InternalOntolizer.g:1922:1: rule__EdgeList__EdgesAssignment_2_1 : ( ruleEdge ) ;
+    // InternalOntolizer.g:1841:1: rule__EdgeList__EdgesAssignment_2_1 : ( ruleEdge ) ;
     public final void rule__EdgeList__EdgesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1926:1: ( ( ruleEdge ) )
-            // InternalOntolizer.g:1927:2: ( ruleEdge )
+            // InternalOntolizer.g:1845:1: ( ( ruleEdge ) )
+            // InternalOntolizer.g:1846:2: ( ruleEdge )
             {
-            // InternalOntolizer.g:1927:2: ( ruleEdge )
-            // InternalOntolizer.g:1928:3: ruleEdge
+            // InternalOntolizer.g:1846:2: ( ruleEdge )
+            // InternalOntolizer.g:1847:3: ruleEdge
             {
              before(grammarAccess.getEdgeListAccess().getEdgesEdgeParserRuleCall_2_1_0()); 
             pushFollow(FOLLOW_2);
@@ -5826,21 +5574,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__Edge__TargetNodeAssignment"
-    // InternalOntolizer.g:1937:1: rule__Edge__TargetNodeAssignment : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1856:1: rule__Edge__TargetNodeAssignment : ( ( RULE_ID ) ) ;
     public final void rule__Edge__TargetNodeAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1941:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:1942:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1860:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1861:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:1942:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1943:3: ( RULE_ID )
+            // InternalOntolizer.g:1861:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1862:3: ( RULE_ID )
             {
              before(grammarAccess.getEdgeAccess().getTargetNodeNodeCrossReference_0()); 
-            // InternalOntolizer.g:1944:3: ( RULE_ID )
-            // InternalOntolizer.g:1945:4: RULE_ID
+            // InternalOntolizer.g:1863:3: ( RULE_ID )
+            // InternalOntolizer.g:1864:4: RULE_ID
             {
              before(grammarAccess.getEdgeAccess().getTargetNodeNodeIDTerminalRuleCall_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5871,17 +5619,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__NameAssignment_1"
-    // InternalOntolizer.g:1956:1: rule__View__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalOntolizer.g:1875:1: rule__View__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__View__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1960:1: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1961:2: ( RULE_ID )
+            // InternalOntolizer.g:1879:1: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1880:2: ( RULE_ID )
             {
-            // InternalOntolizer.g:1961:2: ( RULE_ID )
-            // InternalOntolizer.g:1962:3: RULE_ID
+            // InternalOntolizer.g:1880:2: ( RULE_ID )
+            // InternalOntolizer.g:1881:3: RULE_ID
             {
              before(grammarAccess.getViewAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5908,21 +5656,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__EdgeTypesAssignment_2_1"
-    // InternalOntolizer.g:1971:1: rule__View__EdgeTypesAssignment_2_1 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1890:1: rule__View__EdgeTypesAssignment_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__View__EdgeTypesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1975:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:1976:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1894:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1895:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:1976:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1977:3: ( RULE_ID )
+            // InternalOntolizer.g:1895:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1896:3: ( RULE_ID )
             {
              before(grammarAccess.getViewAccess().getEdgeTypesEdgeTypeCrossReference_2_1_0()); 
-            // InternalOntolizer.g:1978:3: ( RULE_ID )
-            // InternalOntolizer.g:1979:4: RULE_ID
+            // InternalOntolizer.g:1897:3: ( RULE_ID )
+            // InternalOntolizer.g:1898:4: RULE_ID
             {
              before(grammarAccess.getViewAccess().getEdgeTypesEdgeTypeIDTerminalRuleCall_2_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5953,21 +5701,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__EdgeTypesAssignment_2_2_1"
-    // InternalOntolizer.g:1990:1: rule__View__EdgeTypesAssignment_2_2_1 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1909:1: rule__View__EdgeTypesAssignment_2_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__View__EdgeTypesAssignment_2_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:1994:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:1995:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1913:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1914:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:1995:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:1996:3: ( RULE_ID )
+            // InternalOntolizer.g:1914:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1915:3: ( RULE_ID )
             {
              before(grammarAccess.getViewAccess().getEdgeTypesEdgeTypeCrossReference_2_2_1_0()); 
-            // InternalOntolizer.g:1997:3: ( RULE_ID )
-            // InternalOntolizer.g:1998:4: RULE_ID
+            // InternalOntolizer.g:1916:3: ( RULE_ID )
+            // InternalOntolizer.g:1917:4: RULE_ID
             {
              before(grammarAccess.getViewAccess().getEdgeTypesEdgeTypeIDTerminalRuleCall_2_2_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -5998,21 +5746,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__NodeTypesAssignment_3_1"
-    // InternalOntolizer.g:2009:1: rule__View__NodeTypesAssignment_3_1 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1928:1: rule__View__NodeTypesAssignment_3_1 : ( ( RULE_ID ) ) ;
     public final void rule__View__NodeTypesAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:2013:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:2014:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1932:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1933:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:2014:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:2015:3: ( RULE_ID )
+            // InternalOntolizer.g:1933:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1934:3: ( RULE_ID )
             {
              before(grammarAccess.getViewAccess().getNodeTypesNodeTypeCrossReference_3_1_0()); 
-            // InternalOntolizer.g:2016:3: ( RULE_ID )
-            // InternalOntolizer.g:2017:4: RULE_ID
+            // InternalOntolizer.g:1935:3: ( RULE_ID )
+            // InternalOntolizer.g:1936:4: RULE_ID
             {
              before(grammarAccess.getViewAccess().getNodeTypesNodeTypeIDTerminalRuleCall_3_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -6043,21 +5791,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__View__NodeTypesAssignment_3_2_1"
-    // InternalOntolizer.g:2028:1: rule__View__NodeTypesAssignment_3_2_1 : ( ( RULE_ID ) ) ;
+    // InternalOntolizer.g:1947:1: rule__View__NodeTypesAssignment_3_2_1 : ( ( RULE_ID ) ) ;
     public final void rule__View__NodeTypesAssignment_3_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:2032:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:2033:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1951:1: ( ( ( RULE_ID ) ) )
+            // InternalOntolizer.g:1952:2: ( ( RULE_ID ) )
             {
-            // InternalOntolizer.g:2033:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:2034:3: ( RULE_ID )
+            // InternalOntolizer.g:1952:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1953:3: ( RULE_ID )
             {
              before(grammarAccess.getViewAccess().getNodeTypesNodeTypeCrossReference_3_2_1_0()); 
-            // InternalOntolizer.g:2035:3: ( RULE_ID )
-            // InternalOntolizer.g:2036:4: RULE_ID
+            // InternalOntolizer.g:1954:3: ( RULE_ID )
+            // InternalOntolizer.g:1955:4: RULE_ID
             {
              before(grammarAccess.getViewAccess().getNodeTypesNodeTypeIDTerminalRuleCall_3_2_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -6087,71 +5835,26 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
     // $ANTLR end "rule__View__NodeTypesAssignment_3_2_1"
 
 
-    // $ANTLR start "rule__View__NodeAssignment_4_1"
-    // InternalOntolizer.g:2047:1: rule__View__NodeAssignment_4_1 : ( ( RULE_ID ) ) ;
-    public final void rule__View__NodeAssignment_4_1() throws RecognitionException {
+    // $ANTLR start "rule__View__DepthAssignment_4_1"
+    // InternalOntolizer.g:1966:1: rule__View__DepthAssignment_4_1 : ( ruleDepthRange ) ;
+    public final void rule__View__DepthAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:2051:1: ( ( ( RULE_ID ) ) )
-            // InternalOntolizer.g:2052:2: ( ( RULE_ID ) )
+            // InternalOntolizer.g:1970:1: ( ( ruleDepthRange ) )
+            // InternalOntolizer.g:1971:2: ( ruleDepthRange )
             {
-            // InternalOntolizer.g:2052:2: ( ( RULE_ID ) )
-            // InternalOntolizer.g:2053:3: ( RULE_ID )
+            // InternalOntolizer.g:1971:2: ( ruleDepthRange )
+            // InternalOntolizer.g:1972:3: ruleDepthRange
             {
-             before(grammarAccess.getViewAccess().getNodeNodeCrossReference_4_1_0()); 
-            // InternalOntolizer.g:2054:3: ( RULE_ID )
-            // InternalOntolizer.g:2055:4: RULE_ID
-            {
-             before(grammarAccess.getViewAccess().getNodeNodeIDTerminalRuleCall_4_1_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getViewAccess().getNodeNodeIDTerminalRuleCall_4_1_0_1()); 
-
-            }
-
-             after(grammarAccess.getViewAccess().getNodeNodeCrossReference_4_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__View__NodeAssignment_4_1"
-
-
-    // $ANTLR start "rule__View__DepthAssignment_5_1"
-    // InternalOntolizer.g:2066:1: rule__View__DepthAssignment_5_1 : ( ruleDepthRange ) ;
-    public final void rule__View__DepthAssignment_5_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalOntolizer.g:2070:1: ( ( ruleDepthRange ) )
-            // InternalOntolizer.g:2071:2: ( ruleDepthRange )
-            {
-            // InternalOntolizer.g:2071:2: ( ruleDepthRange )
-            // InternalOntolizer.g:2072:3: ruleDepthRange
-            {
-             before(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_5_1_0()); 
+             before(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
             ruleDepthRange();
 
             state._fsp--;
 
-             after(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_5_1_0()); 
+             after(grammarAccess.getViewAccess().getDepthDepthRangeParserRuleCall_4_1_0()); 
 
             }
 
@@ -6170,21 +5873,21 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
         }
         return ;
     }
-    // $ANTLR end "rule__View__DepthAssignment_5_1"
+    // $ANTLR end "rule__View__DepthAssignment_4_1"
 
 
     // $ANTLR start "rule__DepthRange__StartAssignment_0"
-    // InternalOntolizer.g:2081:1: rule__DepthRange__StartAssignment_0 : ( RULE_INT ) ;
+    // InternalOntolizer.g:1981:1: rule__DepthRange__StartAssignment_0 : ( RULE_INT ) ;
     public final void rule__DepthRange__StartAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:2085:1: ( ( RULE_INT ) )
-            // InternalOntolizer.g:2086:2: ( RULE_INT )
+            // InternalOntolizer.g:1985:1: ( ( RULE_INT ) )
+            // InternalOntolizer.g:1986:2: ( RULE_INT )
             {
-            // InternalOntolizer.g:2086:2: ( RULE_INT )
-            // InternalOntolizer.g:2087:3: RULE_INT
+            // InternalOntolizer.g:1986:2: ( RULE_INT )
+            // InternalOntolizer.g:1987:3: RULE_INT
             {
              before(grammarAccess.getDepthRangeAccess().getStartINTTerminalRuleCall_0_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -6211,17 +5914,17 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
 
 
     // $ANTLR start "rule__DepthRange__EndAssignment_1_1"
-    // InternalOntolizer.g:2096:1: rule__DepthRange__EndAssignment_1_1 : ( RULE_INT ) ;
+    // InternalOntolizer.g:1996:1: rule__DepthRange__EndAssignment_1_1 : ( RULE_INT ) ;
     public final void rule__DepthRange__EndAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalOntolizer.g:2100:1: ( ( RULE_INT ) )
-            // InternalOntolizer.g:2101:2: ( RULE_INT )
+            // InternalOntolizer.g:2000:1: ( ( RULE_INT ) )
+            // InternalOntolizer.g:2001:2: ( RULE_INT )
             {
-            // InternalOntolizer.g:2101:2: ( RULE_INT )
-            // InternalOntolizer.g:2102:3: RULE_INT
+            // InternalOntolizer.g:2001:2: ( RULE_INT )
+            // InternalOntolizer.g:2002:3: RULE_INT
             {
              before(grammarAccess.getDepthRangeAccess().getEndINTTerminalRuleCall_1_1_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -6263,8 +5966,8 @@ public class InternalOntolizerParser extends AbstractInternalContentAssistParser
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000F01000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000701000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000800000L});
 
 }

@@ -51,7 +51,6 @@ public class OntolizerParser extends AbstractContentAssistParser {
 					put(grammarAccess.getViewAccess().getGroup_3(), "rule__View__Group_3__0");
 					put(grammarAccess.getViewAccess().getGroup_3_2(), "rule__View__Group_3_2__0");
 					put(grammarAccess.getViewAccess().getGroup_4(), "rule__View__Group_4__0");
-					put(grammarAccess.getViewAccess().getGroup_5(), "rule__View__Group_5__0");
 					put(grammarAccess.getDepthRangeAccess().getGroup(), "rule__DepthRange__Group__0");
 					put(grammarAccess.getDepthRangeAccess().getGroup_1(), "rule__DepthRange__Group_1__0");
 					put(grammarAccess.getModelAccess().getNodeTypesAssignment_0(), "rule__Model__NodeTypesAssignment_0");
@@ -76,8 +75,7 @@ public class OntolizerParser extends AbstractContentAssistParser {
 					put(grammarAccess.getViewAccess().getEdgeTypesAssignment_2_2_1(), "rule__View__EdgeTypesAssignment_2_2_1");
 					put(grammarAccess.getViewAccess().getNodeTypesAssignment_3_1(), "rule__View__NodeTypesAssignment_3_1");
 					put(grammarAccess.getViewAccess().getNodeTypesAssignment_3_2_1(), "rule__View__NodeTypesAssignment_3_2_1");
-					put(grammarAccess.getViewAccess().getNodeAssignment_4_1(), "rule__View__NodeAssignment_4_1");
-					put(grammarAccess.getViewAccess().getDepthAssignment_5_1(), "rule__View__DepthAssignment_5_1");
+					put(grammarAccess.getViewAccess().getDepthAssignment_4_1(), "rule__View__DepthAssignment_4_1");
 					put(grammarAccess.getDepthRangeAccess().getStartAssignment_0(), "rule__DepthRange__StartAssignment_0");
 					put(grammarAccess.getDepthRangeAccess().getEndAssignment_1_1(), "rule__DepthRange__EndAssignment_1_1");
 				}

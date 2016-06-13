@@ -38,7 +38,7 @@ View:
 	'View' name=ID
 	('edgeTypes' edgeTypes+=[EdgeType] (',' edgeTypes+=[EdgeType])*)?
 	('nodeTypes' nodeTypes+=[NodeType] (',' nodeTypes+=[NodeType])*)?
-	('node' node=[Node])?
+//	('node' node=[Node])?
 	('depth' depth=DepthRange)?
 	';'
 ;

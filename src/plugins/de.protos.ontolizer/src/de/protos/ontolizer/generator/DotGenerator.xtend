@@ -1,36 +1,41 @@
 package de.protos.ontolizer.generator
 
+import com.google.common.collect.Multimap
+import com.google.common.collect.Multimaps
 import de.protos.ontolizer.ontolizer.Edge
 import de.protos.ontolizer.ontolizer.EdgeList
-import de.protos.ontolizer.ontolizer.EdgeType
 import de.protos.ontolizer.ontolizer.Model
 import de.protos.ontolizer.ontolizer.Node
-import de.protos.ontolizer.ontolizer.NodeType
 import de.protos.ontolizer.ontolizer.View
-import java.util.HashSet
-import org.eclipse.emf.common.util.EList
+import java.util.List
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.Delegate
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import java.util.List
-import org.eclipse.xtend.lib.annotations.Accessors
-import org.eclipse.xtend.lib.annotations.Delegate
-import com.google.common.collect.Iterables
+import org.eclipse.xtext.xbase.lib.Functions.Function2
+import java.util.Map
 
 class DotGenerator extends AbstractGenerator {
 	
 	static val NEWLINE = System.lineSeparator // os line separator
-	static val MAX_DEPTH = 0 // equals default of DepthRange
+	/**
+	 * Default value in emf model.
+	 */
+	static val DEPTH_DEFAULT_VALUE = 0
 	
 	@Accessors
 	static class ExpandedModel implements Model {
-		@Delegate
-		val Model model
+		@Delegate val Model model
+		val Multimap<Node, Edge> forwardEdges
+		val Multimap<Node, Edge> backwardEdges 
 		
-		
-		val forwardEdges = model.eAllContents.filter(Edge).toMap[eContainer.eContainer as Node]
-		val backwardEdges = model.eAllContents.filter(EdgeList).map[edges].toIterable.flatten.toMap[targetNode]
+		new(Model model){
+			this.model = model
+			forwardEdges = Multimaps.index(model.eAllContents.filter(Edge), [eContainer.eContainer as Node])
+			backwardEdges = Multimaps.index(model.eAllContents.filter(EdgeList).map[edges].toIterable.flatten, [targetNode])
+		}
 	}
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -42,51 +47,92 @@ class DotGenerator extends AbstractGenerator {
 		generateAntBuildfile(baseFileNames, fsa)
 	}
 	
+	def static <T> void bfs(Iterable<T> iterable, Function2<? super T, ? super Integer, Iterable<? extends T>> visitFunction) {
+		val visted = <T>newHashSet
+		val stack = <T>newLinkedList(iterable)
+		
+		var currentDepth = 0
+		var lastElementInDepth = if(!stack.empty) stack.last
+		while(!stack.empty){
+			val current = stack.pop
+			visitFunction.apply(current, currentDepth).forEach[toVisit | if (visted += toVisit) stack.addLast(toVisit)]
+			if(current == lastElementInDepth){
+				lastElementInDepth = if(!stack.empty) stack.last
+				currentDepth += 1
+			}
+		}
+	}
+	
 	def List<String> generateView(ExpandedModel model, View view, IFileSystemAccess2 fsa){
 		val List<String> baseFileNames = newArrayList
 		
-		val depthStart = if(view.depth != null) view.depth.start else MAX_DEPTH
-		val depthEnd = if(view.depth != null) view.depth.end else MAX_DEPTH
-		
 		val (Node) => boolean nodeFilter = [node | view.nodeTypes.empty || view.nodeTypes.contains(node.nodeType)]
-		val (EdgeList) => boolean edgeListFilter = [list | true]
-		val (Edge) => boolean edgeFilter = [edge | true ]
+		val (Edge) => boolean edgeFilter = [edge | view.edgeTypes.empty || view.edgeTypes.contains(edge.eContainer)]
+		val contextNodes = model.nodes.filter[nodeFilter.apply(it)]
 		
-		model.nodes.filter[nodeFilter.apply(it)].forEach[contextNode |
-			for (graphDepth : depthStart .. depthEnd) {
-				val allNodes = newHashSet
-				val allEdges = newHashSet
-				val stack = newLinkedList(contextNode)
+		if(view.depth == null || view.depth.start == 0){
+			// generate single graph without clickMap
+			val graphDepth = if(view.depth == null) 1 else view.depth.start
+			val graphNodes = newArrayList
+			val graphEdges = newArrayList
+			contextNodes.bfs[node, depth |
+				graphNodes += node
+				if(depth >= graphDepth) return emptyList
 				
-				var currentDepth = 1 
-				var lastElementInDepth = contextNode
-				while(!stack.empty){
-					val node = stack.pop
-					val biEdges = Iterables.concat(model.forwardEdges.get(node), model.backwardEdges.get(node))
-					val edges = node.edgeLists.filter[edgeListFilter.apply(it)].map[edges].flatten.filter[edgeFilter.apply(it)]
-					allEdges += edges
-					edges.map[targetNode].filter[nodeFilter.apply(it)].forEach[if(allNodes += it) stack.addLast(it)]
-					if(node == lastElementInDepth){
-						currentDepth++
-						lastElementInDepth = if(!stack.empty) stack.last
-						if(graphDepth != MAX_DEPTH && currentDepth >= graphDepth)
-							stack.clear
-					}
+				val forwardEdges = model.forwardEdges.get(node).filter[edgeFilter.apply(it)]
+				val backwardEdges = model.backwardEdges.get(node).filter[edgeFilter.apply(it)]
+				graphEdges += (forwardEdges + backwardEdges).toSet
+				return (forwardEdges.map[targetNode] + backwardEdges.map[eContainer.eContainer as Node]).filter[nodeFilter.apply(it)]
+			]
+			
+			fsa.generateFile('''«view.name».dot''', generateDotFile(graphNodes, graphEdges, null))
+			baseFileNames += view.name
+			
+		} else {
+			// generate graphs with context nodes per depth and with clickMap
+			contextNodes.forEach[contextNode |
+				val depthEnd = if(view.depth.end == DEPTH_DEFAULT_VALUE) view.depth.start else view.depth.end
+				val (Integer) => String filePrefixComputer = [graphDepth| '''«view.name»_«graphDepth»_''']
+				
+				// depth links
+				val depthToc = newLinkedHashMap
+				for (graphDepth : view.depth.start .. depthEnd)
+					depthToc.put(graphDepth, filePrefixComputer.apply(graphDepth) + contextNode.name + '.html')
+				
+				var lastEdgeCount = 0
+				for (graphDepth : view.depth.start .. depthEnd) {
+					val graphNodes = newArrayList
+					val graphEdges = newArrayList
+					#[contextNode].bfs[node, depth | 
+						graphNodes += node
+						if(depth >= graphDepth) return emptyList
+						
+						val forwardEdges = model.forwardEdges.get(node).filter[edgeFilter.apply(it)]
+						val backwardEdges = model.backwardEdges.get(node).filter[edgeFilter.apply(it)]
+						graphEdges += (forwardEdges + backwardEdges).toSet
+						return (forwardEdges.map[targetNode] + backwardEdges.map[eContainer.eContainer as Node]).filter[nodeFilter.apply(it)]
+					]
+					
+					val filePrefix = filePrefixComputer.apply(graphDepth)
+					val (Node)=>String urlComputer = [node|filePrefix + node.name + '.svg']
+					fsa.generateFile(filePrefix + contextNode.name + '.dot', generateDotFile(graphNodes, graphEdges, urlComputer))
+					fsa.generateFile(filePrefix + contextNode.name + '.html', generateGraphHTML(urlComputer.apply(contextNode), depthToc))
+					baseFileNames += filePrefix + contextNode.name
+					
+					// check if max depth has been reached
+					if(lastEdgeCount >= graphEdges.size)
+						return;
+					lastEdgeCount = graphEdges.size
 				}
-				
-				val filePrefix = '''«view.name»_«IF graphDepth != MAX_DEPTH»«graphDepth»_«ENDIF»'''
-				val (Node)=>String urlComputer = [node|filePrefix + node.name + '.svg']
-				fsa.generateFile(filePrefix + contextNode.name + '.dot', generateDotFile(allNodes, allEdges, urlComputer))
-				baseFileNames += filePrefix + contextNode.name
-			}
-		]
+			]
+		}
 		
 		return baseFileNames
 	}
 	
-	def generateDotFile(HashSet<Node> nodes, HashSet<Edge> edges, (Node) => String urlComputer) {
+	def generateDotFile(Iterable<Node> nodes, Iterable<Edge> edges, (Node) => String urlComputer) {
 		val dotEntries = newArrayList
-		dotEntries += nodes.map[genDot(urlComputer.apply(it))]
+		dotEntries += nodes.map[genDot(urlComputer?.apply(it))]
 		dotEntries += edges.map[genDot]
 		
 		'''
@@ -191,29 +237,54 @@ class DotGenerator extends AbstractGenerator {
 		
 		</project>
 	'''
+	
+	def private generateGraphHTML(String svgFilePath, Map<Integer, String> depthFilePaths)'''
+		<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+			<script>
+			 $(function(){
+			      $("#includedContent").load("«svgFilePath»", function() {
+				      var aList = document.getElementsByTagName("a");
+				      for(var i=0;i<aList.length;i++){
+				    	  var origLink = aList[i].getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+				    	  if(origLink != null){
+				    	  	aList[i].setAttributeNS('http://www.w3.org/1999/xlink', 'href', origLink.replace('.svg', '.html'));
+				    	  }
+				      }
+			      });
+			    });
+			</script>
+		</head>
+		<body>
+			<div class="depthLinks">«FOR entry : depthFilePaths.entrySet BEFORE 'Depths: ' SEPARATOR ', '»<a href="«entry.value»">«entry.key»</a>«ENDFOR»</div>
+			<div id="includedContent"></div>
+		</body>
+		</html>
+	'''
 
 	
 
-	def filterNodesForNodeTypes(EList<Node> nodes, EList<NodeType> nodeTypes) {
-		if (nodeTypes.empty)
-			nodes
-		else
-			nodes.filter[e|nodeTypes.contains(e.nodeType)]
-	}
-
-	def filterEdgeListsForEdgeTypes(Iterable<EdgeList> edgeLists, EList<EdgeType> edgeTypes) {
-		if (edgeTypes.empty)
-			edgeLists
-		else
-			edgeLists.filter[e|edgeTypes.contains(e.edgeType)]
-	}
-
-	def filterEdgesForNodeTypes(Iterable<Edge> edges, EList<NodeType> nodeTypes) {
-		if (nodeTypes.empty)
-			edges
-		else
-			edges.filter[e|nodeTypes.contains(e.targetNode.nodeType)]
-	}
+//	def filterNodesForNodeTypes(EList<Node> nodes, EList<NodeType> nodeTypes) {
+//		if (nodeTypes.empty)
+//			nodes
+//		else
+//			nodes.filter[e|nodeTypes.contains(e.nodeType)]
+//	}
+//
+//	def filterEdgeListsForEdgeTypes(Iterable<EdgeList> edgeLists, EList<EdgeType> edgeTypes) {
+//		if (edgeTypes.empty)
+//			edgeLists
+//		else
+//			edgeLists.filter[e|edgeTypes.contains(e.edgeType)]
+//	}
+//
+//	def filterEdgesForNodeTypes(Iterable<Edge> edges, EList<NodeType> nodeTypes) {
+//		if (nodeTypes.empty)
+//			edges
+//		else
+//			edges.filter[e|nodeTypes.contains(e.targetNode.nodeType)]
+//	}
 
 //	def generateViewFileContent(Model model, View view) {
 //		generateDotFileContent(model, view)

@@ -43,7 +43,6 @@
         upperBound="-1" eType="#//EdgeType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="nodeTypes" unique="false"
         upperBound="-1" eType="#//NodeType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="depth" eType="#//DepthRange"
         containment="true"/>
   </eClassifiers>

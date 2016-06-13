@@ -3,7 +3,10 @@
  */
 package de.protos.ontolizer.validation;
 
+import de.protos.ontolizer.ontolizer.DepthRange;
+import de.protos.ontolizer.ontolizer.OntolizerPackage;
 import de.protos.ontolizer.validation.AbstractOntolizerValidator;
+import org.eclipse.xtext.validation.Check;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +15,27 @@ import de.protos.ontolizer.validation.AbstractOntolizerValidator;
  */
 @SuppressWarnings("all")
 public class OntolizerValidator extends AbstractOntolizerValidator {
+  @Check
+  public void checkDepthRange(final DepthRange it) {
+    int _start = it.getStart();
+    boolean _equals = (_start == 0);
+    if (_equals) {
+      this.warning("default \'0\' represents infinite depth, statement is expendable", it, OntolizerPackage.Literals.DEPTH_RANGE__START);
+    } else {
+      boolean _and = false;
+      int _end = it.getEnd();
+      boolean _notEquals = (_end != 0);
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        int _start_1 = it.getStart();
+        int _end_1 = it.getEnd();
+        boolean _greaterThan = (_start_1 > _end_1);
+        _and = _greaterThan;
+      }
+      if (_and) {
+        this.error("depth must be an numeric interval", it, null);
+      }
+    }
+  }
 }

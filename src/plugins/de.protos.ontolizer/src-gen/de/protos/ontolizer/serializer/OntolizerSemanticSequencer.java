@@ -169,13 +169,7 @@ public class OntolizerSemanticSequencer extends AbstractDelegatingSemanticSequen
 	 *     View returns View
 	 *
 	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (edgeTypes+=[EdgeType|ID] edgeTypes+=[EdgeType|ID]*)? 
-	 *         (nodeTypes+=[NodeType|ID] nodeTypes+=[NodeType|ID]*)? 
-	 *         node=[Node|ID]? 
-	 *         depth=DepthRange?
-	 *     )
+	 *     (name=ID (edgeTypes+=[EdgeType|ID] edgeTypes+=[EdgeType|ID]*)? (nodeTypes+=[NodeType|ID] nodeTypes+=[NodeType|ID]*)? depth=DepthRange?)
 	 */
 	protected void sequence_View(ISerializationContext context, View semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
