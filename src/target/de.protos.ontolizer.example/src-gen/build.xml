@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     Generates bitmap images from DOT files for process documentation
+     ====================================================================== -->
+<project name="builddotfiles" default="build">
+	<description>
+	   	Generates bitmap images from DOT files for process documentation
+	   </description>
+
+	<target name="build" description="description" depends="init-dot.binpath">
+		<compileDot mapFile="_global_1_OntologyModeling.map" svgFile="_global_1_OntologyModeling.svg" dotFile="_global_1_OntologyModeling.dot"/>
+		<compileDot mapFile="_global_2_OntologyModeling.map" svgFile="_global_2_OntologyModeling.svg" dotFile="_global_2_OntologyModeling.dot"/>
+		<compileDot mapFile="_global_3_OntologyModeling.map" svgFile="_global_3_OntologyModeling.svg" dotFile="_global_3_OntologyModeling.dot"/>
+		<compileDot mapFile="_global_1_Usability.map" svgFile="_global_1_Usability.svg" dotFile="_global_1_Usability.dot"/>
+		<compileDot mapFile="_global_2_Usability.map" svgFile="_global_2_Usability.svg" dotFile="_global_2_Usability.dot"/>
+		<compileDot mapFile="_global_3_Usability.map" svgFile="_global_3_Usability.svg" dotFile="_global_3_Usability.dot"/>
+		<compileDot mapFile="_global_1_Traceability.map" svgFile="_global_1_Traceability.svg" dotFile="_global_1_Traceability.dot"/>
+		<compileDot mapFile="_global_2_Traceability.map" svgFile="_global_2_Traceability.svg" dotFile="_global_2_Traceability.dot"/>
+		<compileDot mapFile="_global_3_Traceability.map" svgFile="_global_3_Traceability.svg" dotFile="_global_3_Traceability.dot"/>
+		<compileDot mapFile="_global_1_VersionControl.map" svgFile="_global_1_VersionControl.svg" dotFile="_global_1_VersionControl.dot"/>
+		<compileDot mapFile="_global_2_VersionControl.map" svgFile="_global_2_VersionControl.svg" dotFile="_global_2_VersionControl.dot"/>
+		<compileDot mapFile="_global_3_VersionControl.map" svgFile="_global_3_VersionControl.svg" dotFile="_global_3_VersionControl.dot"/>
+		<compileDot mapFile="_global_1_TextualSyntax.map" svgFile="_global_1_TextualSyntax.svg" dotFile="_global_1_TextualSyntax.dot"/>
+		<compileDot mapFile="_global_2_TextualSyntax.map" svgFile="_global_2_TextualSyntax.svg" dotFile="_global_2_TextualSyntax.dot"/>
+		<compileDot mapFile="_global_3_TextualSyntax.map" svgFile="_global_3_TextualSyntax.svg" dotFile="_global_3_TextualSyntax.dot"/>
+		<compileDot mapFile="Taxonomy.map" svgFile="Taxonomy.svg" dotFile="Taxonomy.dot"/>
+		<compileDot mapFile="CompanyKnowHow.map" svgFile="CompanyKnowHow.svg" dotFile="CompanyKnowHow.dot"/>
+	</target>
+	
+	<macrodef name="compileDot">
+		<attribute name="mapFile"/>
+		<attribute name="svgFile"/>
+		<attribute name="dotFile"/>
+		<sequential>
+			<exec executable="${dot.binpath}">
+				<arg value="-Tsvg"/>
+				<arg value="-o@{svgFile}" />
+				<arg value="@{dotFile}" />
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target name="init-dot.binpath" unless="dot.binpath">
+		<property environment="env" />
+		<condition property="dot.binpath" value="${env.DOT_PATH}/dot" else="dot">
+			<isset property="env.DOT_PATH" />
+		</condition>
+	</target>
+
+</project>

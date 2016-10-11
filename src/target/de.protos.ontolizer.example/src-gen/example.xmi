@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ontolizer:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ontolizer="http://www.protos.de/ontolizer/Ontolizer">
+  <nodeTypes name="Feature" shape="rectangle" color="lightblue" style="filled"/>
+  <nodeTypes name="Requirement" shape="oval" color="orange" style="filled"/>
+  <edgeTypes name="isA"/>
+  <edgeTypes name="solves"/>
+  <edgeTypes name="implements"/>
+  <edgeTypes name="uses"/>
+  <edgeTypes name="includes"/>
+  <nodes name="OntologyModeling">
+    <nodeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|0"/>
+  </nodes>
+  <nodes name="Usability">
+    <nodeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|1"/>
+    <edgeLists>
+      <edgeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|2"/>
+      <edges>
+        <targetNode href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|3"/>
+      </edges>
+      <edges>
+        <targetNode href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|4"/>
+      </edges>
+    </edgeLists>
+  </nodes>
+  <nodes name="Traceability">
+    <nodeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|5"/>
+  </nodes>
+  <nodes name="VersionControl">
+    <nodeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|6"/>
+  </nodes>
+  <nodes name="TextualSyntax">
+    <nodeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|7"/>
+    <summary>Ontolizer is a textual DSL and persists the models as human readable ASCII file. &#xD;
+			This can be versioned, branched and merged &#xD;
+			with any version control system (e.g. Subversion , GIT, ...)</summary>
+    <edgeLists>
+      <edgeType href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|8"/>
+      <edges>
+        <targetNode href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|9"/>
+      </edges>
+    </edgeLists>
+  </nodes>
+  <views name="_global">
+    <depth start="1" end="3"/>
+  </views>
+  <views name="Taxonomy">
+    <edgeTypes href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|10"/>
+  </views>
+  <views name="CompanyKnowHow">
+    <nodeTypes href="platform:/resource/de.protos.ontolizer.example/model/example.ontolizer#|11"/>
+  </views>
+</ontolizer:Model>

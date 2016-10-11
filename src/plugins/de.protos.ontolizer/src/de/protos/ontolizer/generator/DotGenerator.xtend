@@ -211,6 +211,21 @@ class DotGenerator extends AbstractGenerator {
 				</li>
 			«ENDFOR»
 			</ul>
+			<h2>Views by NodeType</h2>
+			<ul>
+			«FOR viewEntry : globalViewLinks.entrySet»
+				<li><a href="«viewEntry.value»">«viewEntry.key.name»</a></li>
+			«ENDFOR»
+			«FOR viewEntry : depthViewLinks.entrySet»
+				<li>«viewEntry.key.name»
+					<ul>
+					«FOR contextNode: viewEntry.value.keySet»
+						<li>«contextNode.name»: «FOR depthLink : viewEntry.value.get(contextNode) SEPARATOR ', '»<a href="«depthLink.value»">«depthLink.key»</a>«ENDFOR»</li>
+					«ENDFOR»
+					</ul>
+				</li>
+			«ENDFOR»
+			</ul>
 			</body>
 		</html>
 	'''

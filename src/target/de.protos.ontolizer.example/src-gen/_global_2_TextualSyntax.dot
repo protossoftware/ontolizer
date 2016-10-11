@@ -1,0 +1,12 @@
+digraph {
+	TextualSyntax [label="TextualSyntax\n[Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
+				This can be versioned, branched and merged 
+				with any version control system (e.g. Subversion , GIT, ...)]", shape=rectangle, fillcolor=red, style=filled, URL="_global_2_TextualSyntax.svg"];
+	VersionControl [shape=oval, fillcolor=orange, style=filled, URL="_global_2_VersionControl.svg"];
+	Usability [shape=oval, fillcolor=orange, style=filled, URL="_global_2_Usability.svg"];
+	TextualSyntax [label="TextualSyntax\n[Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
+				This can be versioned, branched and merged 
+				with any version control system (e.g. Subversion , GIT, ...)]", shape=rectangle, fillcolor=red, style=filled, URL="_global_2_TextualSyntax.svg"];
+	TextualSyntax -> VersionControl [ label = "solves" ];
+	Usability -> VersionControl [ label = "includes" ];
+}

@@ -1,0 +1,7 @@
+digraph {
+	TextualSyntax [label="TextualSyntax\n[Ontolizer is a textual DSL and persists the models as human readable ASCII file. 
+				This can be versioned, branched and merged 
+				with any version control system (e.g. Subversion , GIT, ...)]", shape=rectangle, fillcolor=red, style=filled, URL="_global_1_TextualSyntax.svg"];
+	VersionControl [shape=oval, fillcolor=orange, style=filled, URL="_global_1_VersionControl.svg"];
+	TextualSyntax -> VersionControl [ label = "solves" ];
+}

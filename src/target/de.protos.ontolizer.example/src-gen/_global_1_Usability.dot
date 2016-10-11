@@ -1,0 +1,7 @@
+digraph {
+	Usability [shape=oval, fillcolor=red, style=filled, URL="_global_1_Usability.svg"];
+	Traceability [shape=oval, fillcolor=orange, style=filled, URL="_global_1_Traceability.svg"];
+	VersionControl [shape=oval, fillcolor=orange, style=filled, URL="_global_1_VersionControl.svg"];
+	Usability -> Traceability [ label = "includes" ];
+	Usability -> VersionControl [ label = "includes" ];
+}

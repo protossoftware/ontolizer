@@ -719,6 +719,85 @@ public class DotGenerator extends AbstractGenerator {
     _builder.append("</ul>");
     _builder.newLine();
     _builder.append("\t");
+    _builder.append("<h2>Views by NodeType</h2>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<ul>");
+    _builder.newLine();
+    {
+      Set<Map.Entry<View, String>> _entrySet_2 = globalViewLinks.entrySet();
+      for(final Map.Entry<View, String> viewEntry_2 : _entrySet_2) {
+        _builder.append("\t");
+        _builder.append("<li><a href=\"");
+        String _value_4 = viewEntry_2.getValue();
+        _builder.append(_value_4, "\t");
+        _builder.append("\">");
+        View _key_3 = viewEntry_2.getKey();
+        String _name_3 = _key_3.getName();
+        _builder.append(_name_3, "\t");
+        _builder.append("</a></li>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Set<Map.Entry<View, Multimap<Node, Pair<Integer, String>>>> _entrySet_3 = depthViewLinks.entrySet();
+      for(final Map.Entry<View, Multimap<Node, Pair<Integer, String>>> viewEntry_3 : _entrySet_3) {
+        _builder.append("\t");
+        _builder.append("<li>");
+        View _key_4 = viewEntry_3.getKey();
+        String _name_4 = _key_4.getName();
+        _builder.append(_name_4, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("<ul>");
+        _builder.newLine();
+        {
+          Multimap<Node, Pair<Integer, String>> _value_5 = viewEntry_3.getValue();
+          Set<Node> _keySet_1 = _value_5.keySet();
+          for(final Node contextNode_1 : _keySet_1) {
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("<li>");
+            String _name_5 = contextNode_1.getName();
+            _builder.append(_name_5, "\t\t");
+            _builder.append(": ");
+            {
+              Multimap<Node, Pair<Integer, String>> _value_6 = viewEntry_3.getValue();
+              Collection<Pair<Integer, String>> _get_1 = _value_6.get(contextNode_1);
+              boolean _hasElements_1 = false;
+              for(final Pair<Integer, String> depthLink_1 : _get_1) {
+                if (!_hasElements_1) {
+                  _hasElements_1 = true;
+                } else {
+                  _builder.appendImmediate(", ", "\t\t");
+                }
+                _builder.append("<a href=\"");
+                String _value_7 = depthLink_1.getValue();
+                _builder.append(_value_7, "\t\t");
+                _builder.append("\">");
+                Integer _key_5 = depthLink_1.getKey();
+                _builder.append(_key_5, "\t\t");
+                _builder.append("</a>");
+              }
+            }
+            _builder.append("</li>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+        _builder.append("\t");
+        _builder.append("\t");
+        _builder.append("</ul>");
+        _builder.newLine();
+        _builder.append("\t");
+        _builder.append("</li>");
+        _builder.newLine();
+      }
+    }
+    _builder.append("\t");
+    _builder.append("</ul>");
+    _builder.newLine();
+    _builder.append("\t");
     _builder.append("</body>");
     _builder.newLine();
     _builder.append("</html>");

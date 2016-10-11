@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- stylesheet -->
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+    <link href="../lib/bootstrap.css" rel="stylesheet">
+    <style> a:visited{color:#666633 !important;}</style>
+    
+    <!-- javascript -->
+	<!--<script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>-->
+	<script src="../lib/jquery-3.0.0.min.js"></script>
+	
+	<script>
+	 $(function(){
+	      $("#includedContent").load("_global_3_OntologyModeling.svg", function() {
+		      var aList = document.getElementsByTagName("a");
+		      for(var i=0;i<aList.length;i++){
+		    	  var origLink = aList[i].getAttributeNS('http://www.w3.org/1999/xlink', 'href');
+		    	  if(origLink != null){
+		    	  	aList[i].setAttributeNS('http://www.w3.org/1999/xlink', 'href', origLink.replace('.svg', '.html'));
+		    	  }
+		      }
+	      });
+	    });
+	</script>
+</head>
+<body>
+	<div class="depthLinks">Depths: <a href="_global_1_OntologyModeling.html">1</a>, <a href="_global_2_OntologyModeling.html">2</a>, <a href="_global_3_OntologyModeling.html">3</a></div>
+	<div id="includedContent"></div>
+</body>
+</html>

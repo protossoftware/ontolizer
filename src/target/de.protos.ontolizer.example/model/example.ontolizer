@@ -1,4 +1,5 @@
 View _global
+	depth 1..3
 ;
 
 View Taxonomy
